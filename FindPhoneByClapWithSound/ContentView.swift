@@ -9,20 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let icons = [
-        ("coughing", "coughing"),
-        ("snapping", "snapping"),
-        ("sneezing", "sneezing"),
-        ("train", "train"),
-        ("hello", "hello"),
-        ("air-horn", "air_horn"),
-        ("shouting", "shouting"),
-        ("singing", "singing"),
-        ("say-name", "say_name"),
-        ("clap", "clap"),
-        ("whistle", "whistle"),
-        ("laughing", "laughing")
-    ]
 
         // 3 columns grid layout
         let columns = [

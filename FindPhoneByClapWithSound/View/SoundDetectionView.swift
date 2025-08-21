@@ -8,21 +8,6 @@
 import SwiftUI
 
 struct SoundDetectionView: View {
-    
-    let icons = [
-        ("coughing", "coughing"),
-        ("snapping", "snapping"),
-        ("sneezing", "sneezing"),
-        ("train", "train"),
-        ("hello", "hello"),
-        ("air-horn", "air_horn"),
-        ("shouting", "shouting"),
-        ("singing", "singing"),
-        ("say-name", "say_name"),
-        ("clap", "clap"),
-        ("whistle", "whistle"),
-        ("laughing", "laughing")
-    ]
 
     @Environment(\.dismiss) var dismiss
     @State private var isTapped = false

@@ -21,3 +21,18 @@ let soundData : [SoundMode] = [
     SoundMode(title: "Whistle", image: "whistle"),
     SoundMode(title: "Laughing", image: "laughing")
 ]
+
+let icons = [
+    ("coughing", "coughing"),
+    ("snapping", "snapping"),
+    ("sneezing", "sneezing"),
+    ("train", "train"),
+    ("hello", "hello"),
+    ("air-horn", "air_horn"),
+    ("shouting", "shouting"),
+    ("singing", "singing"),
+    ("say-name", "say_name"),
+    ("clap", "clap"),
+    ("whistle", "whistle"),
+    ("laughing", "laughing")
+]
