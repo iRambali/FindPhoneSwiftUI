@@ -20,8 +20,8 @@ struct IconTabVeiw: View {
                 .frame(width: 62, height: 62)
             
             Text(title)
-                .font(.system(.headline, design: .rounded))
-                .fontWeight(.medium)
+                .font(.system(.subheadline, design: .rounded))
+                .fontWeight(.regular)
                 .foregroundColor(Color.black)
                 .padding(.top, 8)
         }

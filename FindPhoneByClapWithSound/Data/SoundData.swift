@@ -23,6 +23,7 @@ let soundData : [SoundMode] = [
 ]
 
 let icons = [
+    //ImageName - Title
     ("coughing", "coughing"),
     ("snapping", "snapping"),
     ("sneezing", "sneezing"),
@@ -35,4 +36,19 @@ let icons = [
     ("clap", "clap"),
     ("whistle", "whistle"),
     ("laughing", "laughing")
+]
+
+
+let lightIcons = [
+    // ImageName - title
+    ("light_house", "Light House"),
+    ("fire_light", "Fire-Light"),
+    ("flicker", "Flicker"),
+    ("standard", "Standard"),
+    ("green_light", "Green-Light"),
+    ("strobe", "Strobe"),
+    ("sos", "SOS"),
+    ("party", "Party"),
+    ("dim", "Dim")
+    
 ]
