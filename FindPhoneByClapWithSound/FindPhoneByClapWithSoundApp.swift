@@ -9,10 +9,15 @@ import SwiftUI
 
 @main
 struct FindPhoneByClapWithSoundApp: App {
+    @AppStorage("hasLaunchedBefore") var hasLaunchedBefore: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-//            SoundDetectionView()
+            if hasLaunchedBefore {
+                ContentView()
+            } else {
+                SetLanguageView()
+            }
         }
     }
 }

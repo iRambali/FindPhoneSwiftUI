@@ -10,6 +10,7 @@ import SwiftUI
 struct SetLanguageView: View {
     @State private var selectedLanguage: String = LanguageManager.shared.currentLanguage.rawValue
     @Environment(\.dismiss) var dismiss
+    @AppStorage("hasLaunchedBefore") var hasLaunchedBefore: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,6 +22,7 @@ struct SetLanguageView: View {
                 Spacer()
                 
                 Button (action: {
+                    hasLaunchedBefore = true
                     print("Language selected successfully!")
                     if let lang = LanguageManager.AppLanguage(rawValue: selectedLanguage) {
                         LanguageManager.shared.currentLanguage = lang
