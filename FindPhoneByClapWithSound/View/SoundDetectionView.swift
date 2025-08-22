@@ -94,7 +94,7 @@ struct SoundDetectionView: View {
                                 VStack {
                                     IconTabVeiw(
                                         imageName: icon.0,
-                                        title: LanguageManager.shared.localizedString(for: icon.1)
+                                        title: LanguageManager.shared.localizedString(for: icon.1), index: 2, activeIndex: 0
                                     )
                                 }
                             }

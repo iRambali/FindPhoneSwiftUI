@@ -16,6 +16,8 @@ struct ContentView: View {
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
+    @State private var activeIndex = 0
+    @State private var timer: Timer?
     
     var body: some View {
         NavigationStack {
@@ -51,17 +53,29 @@ struct ContentView: View {
                         .padding(.top, 30)
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(icons, id: \.1) { icon in
+                        ForEach(Array(icons.enumerated()), id: \.offset) { index, icon in
                             NavigationLink(
                                 destination: SoundDetectionView(
                                     tabIcons: icons,
                                     selectedIcon: icon
                                 )
                             ) {
-                                IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1))
+                                IconTabVeiw(
+                                    imageName: icon.0,
+                                    title: LanguageManager.shared.localizedString(for: icon.1),
+                                    index: index, // 👈 pass index
+                                    activeIndex: activeIndex
+                                )
                             }
                         }
                     }
+                    .onAppear {
+                        startSequentialAnimation()
+                    }
+                    .onDisappear {
+                        stopSequentialAnimation() // 👈 cancel when leaving
+                    }
+                    
                     .padding(.all)
                     
                     VStack {
@@ -99,6 +113,23 @@ struct ContentView: View {
             }
             .background(Color.colorBackground)
         }
+    }
+    
+    private func startSequentialAnimation() {
+        guard timer == nil else { return } // ✅ prevent multiple timers
+        let total = icons.count
+        let cycleDuration = 3.0
+        
+        timer = Timer.scheduledTimer(withTimeInterval: cycleDuration, repeats: true) { _ in
+            withAnimation {
+                activeIndex = (activeIndex + 1) % total
+            }
+        }
+    }
+    
+    private func stopSequentialAnimation() {
+        timer?.invalidate()
+        timer = nil
     }
     
     

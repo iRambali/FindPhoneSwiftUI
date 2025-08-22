@@ -57,7 +57,7 @@ struct FlashModeView: View {
                                     selectedIcon: icon
                                 )
                             ) {
-                                IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1))
+                                IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1), index: 1, activeIndex: 1)
                             }
                         }
                     }

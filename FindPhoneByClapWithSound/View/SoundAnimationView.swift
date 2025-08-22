@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SoundAnimationView: View {
     var iconImage: String
+    @State private var animate = false
     
     var body: some View {
         
@@ -50,6 +51,9 @@ struct SoundAnimationView: View {
             .frame(width: 220)
     
             
+        }
+        .onAppear {
+            animate = true
         }
 //        .background(Color.colorBackground)
         
