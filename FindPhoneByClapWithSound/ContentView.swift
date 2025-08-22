@@ -52,7 +52,12 @@ struct ContentView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(icons, id: \.1) { icon in
-                            NavigationLink(destination: SoundDetectionView()) {
+                            NavigationLink(
+                                destination: SoundDetectionView(
+                                    tabIcons: icons,
+                                    selectedIcon: icon
+                                )
+                            ) {
                                 IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1))
                             }
                         }

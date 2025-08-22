@@ -13,14 +13,15 @@ struct SoundDetectionView: View {
     @State private var isTapped = false
     @StateObject private var detector = SoundDetector()
     
+    var tabIcons:[(String, String)]
+    @State var selectedIcon: (String, String)
+    
     var body: some View {
         
         VStack() {
-            
+            //MARK: Navigation Header
             HStack {
-                
                 Button(action: {
-                    print("back button tapped.")
                     dismiss()
                 }) {
                     Image(systemName: "arrow.left")
@@ -40,13 +41,13 @@ struct SoundDetectionView: View {
             
             //detected sound
             VStack {
-                SoundAnimationView()
+                SoundAnimationView(iconImage: selectedIcon.0)
             }
             .padding(.top, 50)
             
             
             VStack {
-                Text("Snapping")
+                Text(LanguageManager.shared.localizedString(for: selectedIcon.1))
                     .font(Font.system(size: 24, weight: .bold))
                     .foregroundColor(Color.white)
             }
@@ -86,9 +87,16 @@ struct SoundDetectionView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     HStack(spacing: 20) {
-                        ForEach(icons, id: \.1) { icon in
-                            VStack {
-                                IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1))
+                        ForEach(tabIcons, id: \.1) { icon in
+                            Button {
+                                self.selectedIcon = icon
+                            } label: {
+                                VStack {
+                                    IconTabVeiw(
+                                        imageName: icon.0,
+                                        title: LanguageManager.shared.localizedString(for: icon.1)
+                                    )
+                                }
                             }
                         }
                     }
@@ -107,5 +115,5 @@ struct SoundDetectionView: View {
 }
 
 #Preview {
-    SoundDetectionView()
+    SoundDetectionView(tabIcons: icons, selectedIcon: ("snapping","Snapping"))
 }

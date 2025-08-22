@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SoundAnimationView: View {
+    var iconImage: String
+    
     var body: some View {
         
-        
         ZStack{
-            Image("snapping")
+            Image(iconImage)
                 .resizable()
                 .frame(width: 62, height: 62)
             
@@ -61,7 +62,7 @@ struct SoundAnimationView: View {
 
 struct SoundAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        SoundAnimationView()
+        SoundAnimationView(iconImage: "clap")
             .previewLayout(.fixed(width: 320, height: 320))
     }
 }

@@ -51,7 +51,12 @@ struct FlashModeView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(lightIcons, id: \.1) { icon in
-                            NavigationLink(destination: SoundDetectionView()) {
+                            NavigationLink(
+                                destination: SoundDetectionView(
+                                    tabIcons: lightIcons,
+                                    selectedIcon: icon
+                                )
+                            ) {
                                 IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1))
                             }
                         }
@@ -59,10 +64,6 @@ struct FlashModeView: View {
                     .padding(.all)
                     
                 }
-                
-                
-                
-                
                 
                 
                 Spacer()
