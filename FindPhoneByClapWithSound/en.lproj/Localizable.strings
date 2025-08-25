@@ -5,7 +5,7 @@
   Created by Rambali Kumar on 20/08/25.
   
 */
-
+//MARK: tab icon titles
 coughing = "Coughing";
 snapping = "Snapping";
 sneezing = "Sneezing";
@@ -23,7 +23,7 @@ laughing = "Laughing";
 home_tab = "Home";
 settings_tab = "Settings";
 
-//Home Screen consent
+//MARK: Home Screen consent
 tagline_text = "Sound-based Finder, One Tap Away.";
 rule_text = "Open App: Launch the 'Clap to Find Phone by Sounds' app on your device to access its intuitive interface and get ready to locate your phone using sound detection.\nDashboard: The dashboard displays all available features, including various sound response modes to suit your needs.\nChoosing Modes: Select from multiple options such as steady sound, strobe sound, or SOS sound, allowing you to personalize how the phone responds when a sound is detected.";
 
@@ -31,3 +31,38 @@ consent_text = "By using this app, you agree to the Terms & Conditions and Priva
 terms_text = "Terms & Conditions";
 privacy_text = "Privacy Policy";
 version_text = "Version 1.0.0";
+
+
+//MARK: Sound DetectionView
+"sound_detection" = "Sound Detection";
+"activate_clap_detection" = "Activate Clap detection";
+
+
+//MARK: Settings view
+"settings" = "Settings";
+"general" = "General";
+"more_flash_mode" = "More Flash Mode";
+"change_language" = "Change Language";
+"connect_with_us" = "Connect with us";
+"about_us" = "About Us";
+"rate_us" = "Rate Us";
+"feedback" = "Feedback";
+"privacy_policy" = "Privacy Policy";
+
+//MARK: FlashMode view
+"flash_mode" = "Flash Mode";
+"multiple_lights" = "Multiple Lights";
+
+"light_house_title" = "Light House";
+"fire_light_title" = "Fire-Light";
+"flicker_title" = "Flicker";
+"standard_title" = "Standard";
+"green_light_title" = "Green-Light";
+"strobe_title" = "Strobe";
+"sos_title" = "SOS";
+"party_title" = "Party";
+"dim_title" = "Dim";
+
+
+//MARK: About us view
+

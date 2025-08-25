@@ -6,6 +6,7 @@
   
 */
 
+//MARK: tab icon titles
 coughing = "खाँसी";
 snapping = "चुटकी";
 sneezing = "छींकना";
@@ -28,4 +29,39 @@ consent_text = "इस ऐप का उपयोग करके, आप नि
 terms_text = "नियम और शर्तें";
 privacy_text = "गोपनीयता नीति";
 version_text = "संस्करण 1.0.0";
+
+
+//MARK: Sound DetectionView
+
+"sound_detection" = "ध्वनि पहचान";
+"activate_clap_detection" = "ध्वनि पहचान सक्रिय करें";
+
+//MARK: Settings View
+"settings" = "सेटिंग्स";
+"more_flash_mode" = "अधिक फ्लैश मोड";
+"general" = "सामान्य";
+"change_language" = "भाषा बदलें";
+"connect_with_us" = "हमसे जुड़ें";
+"about_us" = "हमारे बारे में";
+"rate_us" = "हमें रेट करें";
+"feedback" = "प्रतिक्रिया";
+"privacy_policy" = "गोपनीयता नीति";
+
+
+//MARK: FlashMode view
+"flash_mode" = "फ़्लैश मोड";
+"multiple_lights" = "कई लाइट्स";
+
+"light_house_title" = "लाइट हाउस";
+"fire_light_title" = "आग की रोशनी";
+"flicker_title" = "झिलमिल";
+"standard_title" = "मानक";
+"green_light_title" = "हरी रोशनी";
+"strobe_title" = "स्ट्रोब";
+"sos_title" = "SOS";
+"party_title" = "पार्टी";
+"dim_title" = "मंद";
+
+
+//MARK: About us view
 

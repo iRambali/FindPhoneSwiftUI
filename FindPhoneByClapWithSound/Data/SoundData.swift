@@ -41,14 +41,14 @@ let icons = [
 
 let lightIcons = [
     // ImageName - title
-    ("light_house", "Light House"),
-    ("fire_light", "Fire-Light"),
-    ("flicker", "Flicker"),
-    ("standard", "Standard"),
-    ("green_light", "Green-Light"),
-    ("strobe", "Strobe"),
-    ("sos", "SOS"),
-    ("party", "Party"),
-    ("dim", "Dim")
+    ("light_house", "light_house_title"),
+    ("fire_light", "fire_light_title"),
+    ("flicker", "flicker_title"),
+    ("standard", "standard_title"),
+    ("green_light", "green_light_title"),
+    ("strobe", "strobe_title"),
+    ("sos", "sos_title"),
+    ("party", "party_title"),
+    ("dim", "dim_title")
     
 ]

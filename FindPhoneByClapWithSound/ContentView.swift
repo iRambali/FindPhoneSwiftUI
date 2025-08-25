@@ -18,6 +18,7 @@ struct ContentView: View {
         ]
     @State private var activeIndex = 0
     @State private var timer: Timer?
+    @StateObject private var detector = SoundDetector()
     
     var body: some View {
         NavigationStack {
@@ -71,6 +72,7 @@ struct ContentView: View {
                     }
                     .onAppear {
                         startSequentialAnimation()
+                        detector.mode = .flashlight
                     }
                     .onDisappear {
                         stopSequentialAnimation() // 👈 cancel when leaving

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FlashModeView: View {
     @Environment(\.dismiss) var dismiss
+    @StateObject private var detector = SoundDetector()
     // 3 columns grid layout
     let columns = [
         GridItem(.flexible()),
@@ -31,7 +32,7 @@ struct FlashModeView: View {
                     }
                     
                     Spacer()
-                    Text("Flash Mode")
+                    Text(LanguageManager.shared.localizedString(for: "flash_mode"))
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
@@ -42,7 +43,7 @@ struct FlashModeView: View {
                 
                 ScrollView{
                     VStack(alignment: .center, spacing: 0){
-                        Text("Multiple Lights")
+                        Text(LanguageManager.shared.localizedString(for: "multiple_lights"))
                             .font(.system(size: 18, design: .serif))
                             .fontWeight(.medium)
                             .foregroundColor(Color.white)
@@ -60,6 +61,9 @@ struct FlashModeView: View {
                                 IconTabVeiw(imageName: icon.0, title: LanguageManager.shared.localizedString(for: icon.1), index: 1, activeIndex: 1)
                             }
                         }
+                    }
+                    .onAppear{
+                        detector.mode = .flashlight
                     }
                     .padding(.all)
                     

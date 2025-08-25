@@ -28,7 +28,7 @@ struct SettingsView: View {
                     }
                     
                     Spacer()
-                    Text("Settings")
+                    Text(LanguageManager.shared.localizedString(for: "settings"))
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
@@ -41,29 +41,29 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         
                         // MARK: - General Section
-                        SectionHeader(title: "General")
+                        SectionHeader(title: LanguageManager.shared.localizedString(for: "general"))
                         NavigationLink(destination: FlashModeView()) {
                             SettingRow(icon: "lightbulb.max.fill",
-                                       title: "More Flash Mode",
+                                       title: LanguageManager.shared.localizedString(for: "more_flash_mode"),
                                        background: Color.white)
                         }
                         
                         // MARK: - Language Section
-                        SectionHeader(title: "Change Language")
+                        SectionHeader(title: LanguageManager.shared.localizedString(for: "change_language"))
                         
                         NavigationLink(destination: SetLanguageView()) {
                             SettingRow(icon: "globe",
-                                       title: "Change Language",
+                                       title: LanguageManager.shared.localizedString(for: "change_language"),
                                        background: Color.white)
                         }
                         
                         // MARK: - Connect with Us Section
-                        SectionHeader(title: "Connect with us")
+                        SectionHeader(title: LanguageManager.shared.localizedString(for: "connect_with_us"))
                         
                         VStack(spacing: 0) {
                             NavigationLink(destination: AboutUsView()) {
                                 ConnectRow(icon: "info.circle.fill",
-                                           title: "About Us", iconColor: Color.black)
+                                           title: LanguageManager.shared.localizedString(for: "about_us"), iconColor: Color.black)
                             }
                             
                             Divider()
@@ -71,14 +71,14 @@ struct SettingsView: View {
                                 .background(Color.gray.opacity(0.8))  // dark color
                             
                             ConnectRow(icon: "star",
-                                       title: "Rate Us", iconColor: Color.gray)
+                                       title: LanguageManager.shared.localizedString(for: "rate_us"), iconColor: Color.gray)
                             
                             Divider()
                                 .frame(height: 1)              // thickness
                                 .background(Color.gray.opacity(0.8))  // dark color
                             
                             ConnectRow(icon: "info.bubble",
-                                       title: "Feedback", iconColor: Color.blue)
+                                       title: LanguageManager.shared.localizedString(for: "feedback"), iconColor: Color.blue)
                             
                             Divider()
                                 .frame(height: 1)              // thickness
@@ -87,7 +87,7 @@ struct SettingsView: View {
                             Button {
                                 openURL("https://cdn.izooto.com/app-policy/findphonebysounds.html") // Replace with real URL
                             } label: {
-                                ConnectRow(icon: "exclamationmark.shield", title: "Privacy Policy", iconColor: Color.green)
+                                ConnectRow(icon: "exclamationmark.shield", title: LanguageManager.shared.localizedString(for: "privacy_policy"), iconColor: Color.green)
                             }
                         }
                         .background(Color.white)

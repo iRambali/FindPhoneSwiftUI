@@ -30,7 +30,7 @@ struct SoundDetectionView: View {
                 }
                 
                 Spacer()
-                Text("Sound Detection")
+                Text(LanguageManager.shared.localizedString(for: "sound_detection"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
@@ -58,7 +58,15 @@ struct SoundDetectionView: View {
                 Button(action: {
                     print("Button tapped!")
                     isTapped.toggle()
-            //      isTapped ? detector.startListening() : detector.stopListening()
+                    
+//                  isTapped ? detector.startListening() : detector.stopListening()
+                    if isTapped {
+                        detector.startListening()
+                    }else {
+                        detector.stopListening()
+                        detector.stopAlarm()
+                    }
+                    
                 }) {
                     ZStack {
                         if isTapped {
@@ -66,6 +74,7 @@ struct SoundDetectionView: View {
                                 .fill(Color.colorActiveDetectionBtn)
                                 .frame(width: 320, height: 60)
                         } else {
+                            
                             Capsule()
                                 .fill(Color.colorSoundDetectionBtn)
                                 .overlay(
@@ -75,7 +84,7 @@ struct SoundDetectionView: View {
                                 .frame(width: 320, height: 60)
                         }
                         
-                        Text("Activate Clap detection")
+                        Text(LanguageManager.shared.localizedString(for: "activate_clap_detection"))
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.white)
                     }
