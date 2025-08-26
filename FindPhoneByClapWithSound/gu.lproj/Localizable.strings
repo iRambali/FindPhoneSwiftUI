@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  FindPhoneByClapWithSound
+
+  Created by Rambali Kumar on 20/08/25.
+  
+*/
+//MARK: tab icon titles
+"coughing" = "ખાંસી";
+"snapping" = "આંગળીઓ ચટકાવવી";
+"sneezing" = "છાંકડો";
+"train" = "ટ્રેન";
+"hello" = "હેલો";
+"air_horn" = "એર હોર્ન";
+"shouting" = "બુમ";
+"singing" = "ગાયન";
+"say_name" = "નામ બોલવું";
+"clap" = "તાળી";
+"whistle" = "સિટી";
+"laughing" = "હસવું";
+
+//Controller View Name
+"home_tab" = "હોમ";
+"settings_tab" = "સેટિંગ્સ";
+
+//MARK: Home Screen consent
+"tagline_text" = "અવાજ આધારિત શોધક, એક ટૅપ દૂર.";
+"rule_text" = "ઍપ ખોલો: 'ક્લૅપ ટુ ફાઇન્ડ ફોન બાય સાઉન્ડ્સ' ઍપ તમારા ઉપકરણમાં લોન્ચ કરો, સરળ ઇન્ટરફેસ ઍક્સેસ કરવા અને અવાજ દ્વારા ફોન શોધવા તૈયાર થાઓ.\nડૅશબોર્ડ: ડૅશબોર્ડ પર તમામ ફીચર્સ દર્શાવવામાં આવે છે, જેમાં વિવિધ અવાજ પ્રતિભાવ મોડ્સ શામેલ છે.\nમોડ્સ પસંદ કરો: સ્થિર અવાજ, સ્ટ્રોબ અવાજ અથવા SOS અવાજ જેવા વિકલ્પોમાંથી પસંદ કરો અને અવાજ શોધાતાં ફોન કેવી રીતે પ્રતિસાદ આપે તે પર્સનલાઇઝ કરો.";
+"consent_text" = "આ ઍપ વાપરવાથી, તમે નિયમો અને શરતો તથા ગોપનીયતા નીતિ સાથે સંમત છો";
+"terms_text" = "નિયમો અને શરતો";
+"privacy_text" = "ગોપનીયતા નીતિ";
+"version_text" = "સંસ્કરણ 1.0.0";
+
+//MARK: Sound DetectionView
+"sound_detection" = "અવાજ શોધ";
+"activate_clap_detection" = "તાળી શોધ સક્રિય કરો";
+
+//MARK: Settings view
+"settings" = "સેટિંગ્સ";
+"general" = "સામાન્ય";
+"more_flash_mode" = "વધુ ફ્લેશ મોડ્સ";
+"change_language" = "ભાષા બદલો";
+"connect_with_us" = "અમારા સાથે જોડાઓ";
+"about_us" = "અમારા વિષે";
+"rate_us" = "અમને રેટ કરો";
+"feedback" = "પ્રતિસાદ";
+"privacy_policy" = "ગોપનીયતા નીતિ";
+
+//MARK: FlashMode view
+"flash_mode" = "ફ્લેશ મોડ";
+"multiple_lights" = "એકથી વધુ લાઇટ્સ";
+
+"light_house_title" = "લાઇટ હાઉસ";
+"fire_light_title" = "આગ-લાઇટ";
+"flicker_title" = "ઝબકવું";
+"standard_title" = "પ્રમાણભૂત";
+"green_light_title" = "લીલી લાઇટ";
+"strobe_title" = "સ્ટ્રોબ";
+"sos_title" = "SOS";
+"party_title" = "પાર્ટી";
+"dim_title" = "મંદ";

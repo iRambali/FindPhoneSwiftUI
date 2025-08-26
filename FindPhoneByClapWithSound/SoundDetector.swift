@@ -61,7 +61,7 @@ class SoundDetector: ObservableObject {
         let rms = sqrt(channelDataValue.map { $0 * $0 }.reduce(0, +) / Float(buffer.frameLength))
         let avgPower = 20 * log10(rms)
 
-        print("Sound average power: \(avgPower) dB")
+//        print("Sound average power: \(avgPower) dB")
         // Simple threshold detection
 //        if avgPower > -30 { // adjust threshold based on testing
 //            DispatchQueue.main.async {
@@ -77,7 +77,7 @@ class SoundDetector: ObservableObject {
         
         
         
-        if avgPower > -30 { // threshold
+        if avgPower > -5 { // threshold
             self.stopListening()
             DispatchQueue.main.async {
                 switch self.mode {

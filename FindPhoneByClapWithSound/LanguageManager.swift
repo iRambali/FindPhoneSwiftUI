@@ -15,6 +15,7 @@ class LanguageManager {
     enum AppLanguage: String {
         case english = "en"
         case hindi = "hi"
+        case gujarati = "gu"
     }
     
     var currentLanguage: AppLanguage {

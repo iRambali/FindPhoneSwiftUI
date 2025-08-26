@@ -26,7 +26,7 @@ struct SetLanguageView: View {
                     print("Language selected successfully!")
                     if let lang = LanguageManager.AppLanguage(rawValue: selectedLanguage) {
                         LanguageManager.shared.currentLanguage = lang
-                        
+                        print("Current Language : \(LanguageManager.shared.currentLanguage)")
                         // Restart UI so translations apply
                         UIApplication.shared.windows.first?.rootViewController =
                         UIHostingController(rootView: ContentView())

@@ -15,8 +15,9 @@ let languages: [Language] = [
 //    Language(name: "Bangladesh", subtitle: "Select your preferred language", flag: "🇧🇩")
     
     Language(name: "English", subtitle: "Select your preferred language", flag: "🇺🇸", code: "en"),
-    Language(name: "हिन्दी", subtitle: "अपनी भाषा चुनें", flag: "🇮🇳", code: "hi")
+    Language(name: "हिन्दी", subtitle: "अपनी भाषा चुनें", flag: "🇮🇳", code: "hi"),
+    Language(name: "ગુજરાતી", subtitle: "તમારી પસંદગીની ભાષા પસંદ કરો", flag: "🇮🇳", code: "gu")
     
 ]
 
-// control+command+space to select emoji
+// control+command+space to select emoji 🇮🇳
