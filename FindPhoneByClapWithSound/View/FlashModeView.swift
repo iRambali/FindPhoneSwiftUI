@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FlashModeView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var detector = SoundDetector()
+    @StateObject private var detector = SoundDetector.shared
     // 3 columns grid layout
     let columns = [
         GridItem(.flexible()),
@@ -62,15 +62,16 @@ struct FlashModeView: View {
                             }
                         }
                     }
-                    .onAppear{
-                        detector.mode = .flashlight
-                    }
                     .padding(.all)
                     
                 }
                 
                 
                 Spacer()
+            }
+            .onAppear {
+                detector.mode = .flashlight
+                print("📱 FlashModeView set mode: \(detector.mode)")
             }
             .background(Color.colorBackground)
             .navigationBarBackButtonHidden(true)

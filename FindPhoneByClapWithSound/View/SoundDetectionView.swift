@@ -11,7 +11,8 @@ struct SoundDetectionView: View {
 
     @Environment(\.dismiss) var dismiss
     @State private var isTapped = false
-    @StateObject private var detector = SoundDetector()
+    @ObservedObject private var detector = SoundDetector.shared
+    
     
     var tabIcons:[(String, String)]
     @State var selectedIcon: (String, String)
