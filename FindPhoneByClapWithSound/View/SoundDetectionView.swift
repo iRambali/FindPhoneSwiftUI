@@ -24,6 +24,9 @@ struct SoundDetectionView: View {
             HStack {
                 Button(action: {
                     dismiss()
+                    detector.stopListening()
+                    detector.stopAlarm()
+                    detector.stopTorchEffect()
                 }) {
                     Image(systemName: "arrow.left")
                         .font(.title3)
@@ -66,6 +69,8 @@ struct SoundDetectionView: View {
                     }else {
                         detector.stopListening()
                         detector.stopAlarm()
+//                        detector.turnOffFlashlight()
+                        detector.stopTorchEffect()
                     }
                     
                 }) {
@@ -100,6 +105,44 @@ struct SoundDetectionView: View {
                         ForEach(tabIcons, id: \.1) { icon in
                             Button {
                                 self.selectedIcon = icon
+                                if selectedIcon.1 == "light_house_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .lighthouse
+                                    }
+                                }else if selectedIcon.1 == "fire_light_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .fireLight
+                                    }
+                                }else if selectedIcon.1 == "flicker_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .flicker
+                                    }
+                                }else if selectedIcon.1 == "standard_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .standard
+                                    }
+                                }else if selectedIcon.1 == "green_light_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .greenLight
+                                    }
+                                }else if selectedIcon.1 == "strobe_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .strobe
+                                    }
+                                }else if selectedIcon.1 == "sos_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .sos
+                                    }
+                                }else if selectedIcon.1 == "party_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .party
+                                    }
+                                }else if selectedIcon.1 == "dim_title" {
+                                    DispatchQueue.main.async {
+                                        detector.flashlightMode = .dim
+                                    }
+                                }
+                                
                             } label: {
                                 VStack {
                                     IconTabVeiw(
