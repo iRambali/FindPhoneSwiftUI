@@ -30,13 +30,13 @@ rule_text = "Open App: Launch the 'Clap to Find Phone by Sounds' app on your dev
 consent_text = "By using this app, you agree to the Terms & Conditions and Privacy Policy";
 terms_text = "Terms & Conditions";
 privacy_text = "Privacy Policy";
-version_text = "Version 1.0.0";
+version_text = "Version";
 
 
 //MARK: Sound DetectionView
 "sound_detection" = "Sound Detection";
-"activate_clap_detection" = "Activate Clap detection";
-
+"activate_clap_detection" = "Activate Clap Detection";
+"stop_clap_detection" = "Stop Clap Detection";
 
 //MARK: Settings view
 "settings" = "Settings";

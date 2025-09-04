@@ -29,11 +29,12 @@
 "consent_text" = "આ ઍપ વાપરવાથી, તમે નિયમો અને શરતો તથા ગોપનીયતા નીતિ સાથે સંમત છો";
 "terms_text" = "નિયમો અને શરતો";
 "privacy_text" = "ગોપનીયતા નીતિ";
-"version_text" = "સંસ્કરણ 1.0.0";
+"version_text" = "સંસ્કરણ";
 
 //MARK: Sound DetectionView
 "sound_detection" = "અવાજ શોધ";
 "activate_clap_detection" = "તાળી શોધ સક્રિય કરો";
+"stop_clap_detection" = "તાળી શોધવું બંધ કરો";
 
 //MARK: Settings view
 "settings" = "સેટિંગ્સ";

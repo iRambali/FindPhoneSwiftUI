@@ -20,6 +20,11 @@ struct ContentView: View {
     @State private var timer: Timer?
     @StateObject private var detector = SoundDetector.shared
     
+    var appVersion: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+        return "\(version)"
+    }
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -105,7 +110,7 @@ struct ContentView: View {
                     
                     Spacer()
                     VStack(alignment: .center, spacing: 0) {
-                        Text(LanguageManager.shared.localizedString(for: "version_text"))
+                        Text(LanguageManager.shared.localizedString(for: "version_text")+" \(appVersion)")
                             .font(.system(.body, design: .serif))
                             .foregroundColor(.white)
                     }

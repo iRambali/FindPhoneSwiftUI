@@ -28,13 +28,14 @@ rule_text = "ऐप खोलना: अपने डिवाइस पर 'ध
 consent_text = "इस ऐप का उपयोग करके, आप नियम और शर्तें तथा गोपनीयता नीति से सहमत होते हैं";
 terms_text = "नियम और शर्तें";
 privacy_text = "गोपनीयता नीति";
-version_text = "संस्करण 1.0.0";
+version_text = "संस्करण";
 
 
 //MARK: Sound DetectionView
 
 "sound_detection" = "ध्वनि पहचान";
 "activate_clap_detection" = "ध्वनि पहचान सक्रिय करें";
+"stop_clap_detection" = "ताली पहचान बंद करें";
 
 //MARK: Settings View
 "settings" = "सेटिंग्स";

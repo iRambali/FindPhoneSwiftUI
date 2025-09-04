@@ -28,6 +28,35 @@ class SoundDetector: ObservableObject {
         case dim
     }
     
+    // In your SoundDetector or a helper class
+    func setFlashlightMode(for title: String) {
+        DispatchQueue.main.async {
+            switch title {
+            case "light_house_title":
+                self.flashlightMode = .lighthouse
+            case "fire_light_title":
+                self.flashlightMode = .fireLight
+            case "flicker_title":
+                self.flashlightMode = .flicker
+            case "standard_title":
+                self.flashlightMode = .standard
+            case "green_light_title":
+                self.flashlightMode = .greenLight
+            case "strobe_title":
+                self.flashlightMode = .strobe
+            case "sos_title":
+                self.flashlightMode = .sos
+            case "party_title":
+                self.flashlightMode = .party
+            case "dim_title":
+                self.flashlightMode = .dim
+            default:
+                print("⚠️ Unknown flashlight mode: \(title)")
+            }
+        }
+    }
+
+    
     
     private var audioEngine = AVAudioEngine()
     private var player: AVAudioPlayer?
@@ -93,8 +122,8 @@ class SoundDetector: ObservableObject {
                 switch self.mode {
                 case .alarm:
                     self.playAlarm()
+                    self.flicker()
                 case .flashlight:
-//                    self.blinkFlashlight()
                     self.activateFlashlight(mode: self.flashlightMode)
                 }
             }
@@ -124,34 +153,6 @@ class SoundDetector: ObservableObject {
             dim()
         }
     }
-
-    /// 🔦 Blink flashlight like an alarm
-        private func blinkFlashlight() {
-            guard let device = AVCaptureDevice.default(for: .video),
-                  device.hasTorch else {
-                print("⚠️ Torch not available")
-                return
-            }
-            
-            DispatchQueue.global().async {
-                for _ in 0..<5 { // blink 5 times
-                    do {
-                        try device.lockForConfiguration()
-                        try device.setTorchModeOn(level: 1.0)
-                        device.unlockForConfiguration()
-                        usleep(300_000) // ON 0.3s
-                        
-                        try device.lockForConfiguration()
-                        device.torchMode = .off
-                        device.unlockForConfiguration()
-                        usleep(300_000) // OFF 0.3s
-                    } catch {
-                        print("❌ Torch error: \(error.localizedDescription)")
-                    }
-                }
-            }
-        }
-    
     
     func sosFlashlightLoopIndefinitely() {
         guard let device = AVCaptureDevice.default(for: .video),
@@ -199,43 +200,6 @@ class SoundDetector: ObservableObject {
         currentTorchWorkItem = workItem
         torchQueue.async(execute: workItem)
     }
-
-
-    
-    func sosFlashlight() {
-        guard let device = AVCaptureDevice.default(for: .video),
-              device.hasTorch else {
-            print("⚠️ Torch not available")
-            return
-        }
-        
-        let dot: TimeInterval = 0.2   // short blink
-        let dash: TimeInterval = 0.6  // long blink
-        let gap: TimeInterval = 0.2   // gap between blinks
-
-        DispatchQueue.global().async {
-            // SOS pattern = ... --- ...
-            let pattern: [TimeInterval] = [dot, dot, dot, dash, dash, dash, dot, dot, dot]
-            
-            for duration in pattern {
-                do {
-                    try device.lockForConfiguration()
-                    try device.setTorchModeOn(level: 1.0)
-                    device.unlockForConfiguration()
-                    Thread.sleep(forTimeInterval: duration) // ON duration
-                    
-                    try device.lockForConfiguration()
-                    device.torchMode = .off
-                    device.unlockForConfiguration()
-                    Thread.sleep(forTimeInterval: gap) // OFF gap
-                } catch {
-                    print("❌ Torch error: \(error.localizedDescription)")
-                }
-            }
-        }
-    }
-
-
     
     func stopAlarm() {
         player?.stop()
@@ -271,8 +235,7 @@ class SoundDetector: ObservableObject {
         }
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            player?.play()
-            print("🚨 Alarm playing")
+            player?.play() //Alarm Playing
         } catch {
             print("❌ Could not play alarm: \(error.localizedDescription)")
         }
@@ -281,30 +244,6 @@ class SoundDetector: ObservableObject {
 
 
 extension SoundDetector {
-    
-    /// Common helper: turn torch ON for `duration`, then OFF for `gap`
-    private func torchBlink(on duration: TimeInterval, off gap: TimeInterval, repeat count: Int = 1) {
-        guard let device = AVCaptureDevice.default(for: .video),
-              device.hasTorch else { return }
-        
-        DispatchQueue.global().async {
-            for _ in 0..<count {
-                do {
-                    try device.lockForConfiguration()
-                    try device.setTorchModeOn(level: 1.0)
-                    device.unlockForConfiguration()
-                    Thread.sleep(forTimeInterval: duration)
-                    
-                    try device.lockForConfiguration()
-                    device.torchMode = .off
-                    device.unlockForConfiguration()
-                    Thread.sleep(forTimeInterval: gap)
-                } catch {
-                    print("❌ Torch error: \(error.localizedDescription)")
-                }
-            }
-        }
-    }
     
     // 🌊 Lighthouse: Long sweep-like blink (on 2s, off 2s)
     func lighthouse() {
@@ -342,8 +281,6 @@ extension SoundDetector {
         torchQueue.async(execute: workItem)
     }
 
-
-    
     // 🔥 Firelight: Random flickering (simulate fire)
     func firelight() {
         stopTorchEffect()
@@ -387,8 +324,6 @@ extension SoundDetector {
         torchQueue.async(execute: workItem)
     }
 
-    
-    // ⚡ Flicker: Fast irregular blinks
     // ✨ Flicker: Fast random short ON/OFF like a candle flicker
     func flicker() {
         stopTorchEffect()
@@ -429,7 +364,6 @@ extension SoundDetector {
         torchQueue.async(execute: workItem)
     }
 
-    
     // 💡 Standard: Steady ON (runs indefinitely until stopped)
     func standard() {
         guard let device = AVCaptureDevice.default(for: .video),
@@ -437,7 +371,6 @@ extension SoundDetector {
         
         // Stop any previous effect first
         stopTorchEffect()
-        
         shouldStopTorch = false
         isTorchActive = true
         
@@ -456,9 +389,6 @@ extension SoundDetector {
         currentTorchWorkItem = workItem
         torchQueue.async(execute: workItem)
     }
-
-    
-    
     
     // 🟢 Green Light: (⚠️ iPhone torch is white LED → can’t change color without screen trick)
     // So we fake "green light" by blinking in a fixed pattern
@@ -495,7 +425,6 @@ extension SoundDetector {
                     try device.lockForConfiguration()
                     device.torchMode = .off
                     device.unlockForConfiguration()
-                    print("🟢 Green light stopped, torch OFF")
                 } catch {}
             }
         }
@@ -503,7 +432,6 @@ extension SoundDetector {
         currentTorchWorkItem = workItem
         torchQueue.async(execute: workItem)
     }
-
     
     // 🚨 Strobe: Very fast blinking
     func strobe() {
@@ -539,7 +467,6 @@ extension SoundDetector {
                     try device.lockForConfiguration()
                     device.torchMode = .off
                     device.unlockForConfiguration()
-                    print("⚡ Strobe stopped, torch OFF")
                 } catch {}
             }
         }
@@ -547,7 +474,6 @@ extension SoundDetector {
         currentTorchWorkItem = workItem
         torchQueue.async(execute: workItem)
     }
-
     
     // 🎉 Party: Random ON/OFF durations like disco
     func party() {

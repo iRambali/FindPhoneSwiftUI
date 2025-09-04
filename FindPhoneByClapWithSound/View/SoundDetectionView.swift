@@ -54,6 +54,10 @@ struct SoundDetectionView: View {
                 Text(LanguageManager.shared.localizedString(for: selectedIcon.1))
                     .font(Font.system(size: 24, weight: .bold))
                     .foregroundColor(Color.white)
+               
+            }
+            .onAppear {
+                detector.setFlashlightMode(for: selectedIcon.1)
             }
             .padding(.top, 50)
             
@@ -63,13 +67,11 @@ struct SoundDetectionView: View {
                     print("Button tapped!")
                     isTapped.toggle()
                     
-//                  isTapped ? detector.startListening() : detector.stopListening()
                     if isTapped {
                         detector.startListening()
                     }else {
                         detector.stopListening()
                         detector.stopAlarm()
-//                        detector.turnOffFlashlight()
                         detector.stopTorchEffect()
                     }
                     
@@ -90,7 +92,7 @@ struct SoundDetectionView: View {
                                 .frame(width: 320, height: 60)
                         }
                         
-                        Text(LanguageManager.shared.localizedString(for: "activate_clap_detection"))
+                        Text(LanguageManager.shared.localizedString(for: isTapped ? "stop_clap_detection" : "activate_clap_detection"))
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.white)
                     }
@@ -105,44 +107,7 @@ struct SoundDetectionView: View {
                         ForEach(tabIcons, id: \.1) { icon in
                             Button {
                                 self.selectedIcon = icon
-                                if selectedIcon.1 == "light_house_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .lighthouse
-                                    }
-                                }else if selectedIcon.1 == "fire_light_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .fireLight
-                                    }
-                                }else if selectedIcon.1 == "flicker_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .flicker
-                                    }
-                                }else if selectedIcon.1 == "standard_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .standard
-                                    }
-                                }else if selectedIcon.1 == "green_light_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .greenLight
-                                    }
-                                }else if selectedIcon.1 == "strobe_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .strobe
-                                    }
-                                }else if selectedIcon.1 == "sos_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .sos
-                                    }
-                                }else if selectedIcon.1 == "party_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .party
-                                    }
-                                }else if selectedIcon.1 == "dim_title" {
-                                    DispatchQueue.main.async {
-                                        detector.flashlightMode = .dim
-                                    }
-                                }
-                                
+                                detector.setFlashlightMode(for: selectedIcon.1)
                             } label: {
                                 VStack {
                                     IconTabVeiw(
