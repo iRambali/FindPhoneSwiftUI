@@ -35,6 +35,9 @@ version_text = "Version";
 
 //MARK: Sound DetectionView
 "sound_detection" = "Sound Detection";
+"selected_flash_light" = "Selected Flash Light";
+"activate_flashlight" = "Activate Flash Light";
+"deactivate_flashlight" = "Deactivate Flash Light";
 "activate_clap_detection" = "Activate Clap Detection";
 "stop_clap_detection" = "Stop Clap Detection";
 

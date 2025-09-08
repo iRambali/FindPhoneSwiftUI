@@ -34,7 +34,8 @@ struct SoundDetectionView: View {
                 }
                 
                 Spacer()
-                Text(LanguageManager.shared.localizedString(for: "sound_detection"))
+                
+                Text(LanguageManager.shared.localizedString(for: detector.mode == .alarm ? "sound_detection" : "selected_flash_light"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
@@ -91,8 +92,10 @@ struct SoundDetectionView: View {
                                 .shadow(radius: 2)
                                 .frame(width: 320, height: 60)
                         }
-                        
-                        Text(LanguageManager.shared.localizedString(for: isTapped ? "stop_clap_detection" : "activate_clap_detection"))
+                        let btnLabel = detector.mode == .flashlight
+                            ? (isTapped ? "deactivate_flashlight" : "activate_flashlight")
+                            : (isTapped ? "stop_clap_detection" : "activate_clap_detection")
+                        Text(LanguageManager.shared.localizedString(for: btnLabel))
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.white)
                     }

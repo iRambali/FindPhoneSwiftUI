@@ -137,6 +137,15 @@ struct SettingsView: View {
                             
                             ConnectRow(icon: "info.bubble",
                                        title: LanguageManager.shared.localizedString(for: "feedback"), iconColor: Color.blue)
+                            Divider()
+                                .frame(height: 1)              // thickness
+                                .background(Color.gray.opacity(0.8))  // dark color
+                            
+                            Button {
+                                openURL("https://apps.apple.com/app/id739535953") // Replace with real URL
+                            } label: {
+                                ConnectRow(icon: "square.and.arrow.up", title: LanguageManager.shared.localizedString(for: "Share App"), iconColor: Color.primary)
+                            }
                             
                             Divider()
                                 .frame(height: 1)              // thickness

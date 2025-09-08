@@ -10,9 +10,22 @@
 		B51B00292E41D11B00240E59 /* FindPhoneByClapWithSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindPhoneByClapWithSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B59D92192E6ACB6E00F3347D /* Exceptions for "FindPhoneByClapWithSound" folder in "FindPhoneByClapWithSound" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B51B00282E41D11B00240E59 /* FindPhoneByClapWithSound */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B51B002B2E41D11B00240E59 /* FindPhoneByClapWithSound */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B59D92192E6ACB6E00F3347D /* Exceptions for "FindPhoneByClapWithSound" folder in "FindPhoneByClapWithSound" target */,
+			);
 			path = FindPhoneByClapWithSound;
 			sourceTree = "<group>";
 		};
@@ -257,6 +270,7 @@
 				DEVELOPMENT_TEAM = N2T2473XHF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FindPhoneByClapWithSound/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to use the flashlight when sound is detected.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"This app needs microphone access to detect sound.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -289,6 +303,7 @@
 				DEVELOPMENT_TEAM = N2T2473XHF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FindPhoneByClapWithSound/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to use the flashlight when sound is detected.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"This app needs microphone access to detect sound.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

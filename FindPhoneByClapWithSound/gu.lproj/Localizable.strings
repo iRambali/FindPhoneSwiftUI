@@ -33,6 +33,9 @@
 
 //MARK: Sound DetectionView
 "sound_detection" = "અવાજ શોધ";
+"selected_flash_light" = "પસંદ કરેલ ફ્લૅશ લાઇટ";
+"activate_flashlight" = "ફ્લૅશ લાઇટ ચાલુ કરો";
+"deactivate_flashlight" = "ફ્લૅશ લાઇટ બંધ કરો";
 "activate_clap_detection" = "તાળી શોધ સક્રિય કરો";
 "stop_clap_detection" = "તાળી શોધવું બંધ કરો";
 
