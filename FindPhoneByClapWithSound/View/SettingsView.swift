@@ -13,6 +13,23 @@ struct SettingsView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @State private var isExpanded = false
+    @AppStorage("selectedLevel") private var selectedLevelRaw: String = SoundSensitivity.allCases.first!.rawValue
+    @AppStorage("selectedInterval") private var selectedIntervalRaw: String = TimeIntervalOption.allCases.first!.rawValue
+    private var selectedLevel: Binding<SoundSensitivity> {
+        Binding(
+            get: { SoundSensitivity(rawValue: selectedLevelRaw) ?? .low },
+            set: { selectedLevelRaw = $0.rawValue }
+        )
+    }
+    private var selectedInterval: Binding<TimeIntervalOption> {
+        Binding(
+            get: { TimeIntervalOption(rawValue: selectedIntervalRaw) ?? .tenSec },
+            set: { selectedIntervalRaw = $0.rawValue }
+        )
+    }
+
+    
     var body: some View {
         
         NavigationStack {
@@ -57,64 +74,13 @@ struct SettingsView: View {
                                        background: Color.white)
                         }
                         
-                        /*
                         //MARK: - Level
-                         // for level settings ****Keep it outside of body******
-                         @State private var isExpanded = false
-                         @State private var selectedLevel = "Normal"
-                         let levels = ["Silent", "Normal", "Noisy"]
-                         
                         SectionHeader(title: "Sound sensitivity")
+                        DropdownMenu(selectedItem: selectedLevel)
                         
-                        VStack(spacing: 10) {
-                            // Dropdown button
-                            Button(action: {
-                                withAnimation {
-                                    isExpanded.toggle()
-                                }
-                            }) {
-                                HStack {
-                                    Text(selectedLevel)
-                                        .foregroundColor(.black)
-                                        .font(Font.system(size: 16, weight: .regular))
-                                    Spacer()
-                                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                                        .font(Font.system(size: 24, weight: .medium))
-                                        .foregroundColor(.black)
-                                        .frame(width: 30, height: 30)
-                                }
-                                .padding()
-                                .background()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-
-                            }
-                            
-                            // Dropdown list
-                            if isExpanded {
-                                VStack(spacing: 0) {
-                                    ForEach(levels, id: \.self) { level in
-                                        Button(action: {
-                                            selectedLevel = level
-                                            withAnimation {
-                                                isExpanded = false
-                                            }
-                                        }) {
-                                            Text(level)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                                .padding()
-                                                .background(selectedLevel == level ? Color.green.opacity(0.3) : Color.clear)
-                                        }
-                                        Divider()
-                                    }
-                                }
-                                .background(Color.white)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            }
-                        }
-                        */
-                        
+                        SectionHeader(title: "Auto sound off")
+                        DropdownMenu(selectedItem: selectedInterval)
+                                                
                         // MARK: - Connect with Us Section
                         SectionHeader(title: LanguageManager.shared.localizedString(for: "connect_with_us"))
                         

@@ -71,26 +71,36 @@ class SoundDetector: ObservableObject {
         var shouldStopTorch = false
 
     func startListening() {
-        if isListening { return }
-        DispatchQueue.main.async {
-            self.isListening = true
-        }
-        let inputNode = audioEngine.inputNode
-        let format = inputNode.inputFormat(forBus: 0)
-#if targetEnvironment(simulator)
-        print("🎛️ Audio detection is not supported in Simulator.")
-#else
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
-            self.analyzeBuffer(buffer: buffer)
-        }
-#endif
         
-        do {
-            audioEngine.prepare()
-            try audioEngine.start()
-            print("🎙️ Listening started")
-        } catch {
-            print("❌ Could not start audio engine: \(error.localizedDescription)")
+        DispatchQueue.main.async { [self] in
+            switch self.mode {
+            case .alarm:
+                
+                
+                if isListening { return }
+                DispatchQueue.main.async {
+                    self.isListening = true
+                }
+                let inputNode = audioEngine.inputNode
+                let format = inputNode.inputFormat(forBus: 0)
+#if targetEnvironment(simulator)
+                print("🎛️ Audio detection is not supported in Simulator.")
+#else
+                inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
+                    self.analyzeBuffer(buffer: buffer)
+                }
+#endif
+                
+                do {
+                    audioEngine.prepare()
+                    try audioEngine.start()
+                    print("🎙️ Listening started")
+                } catch {
+                    print("❌ Could not start audio engine: \(error.localizedDescription)")
+                }
+            case .flashlight:
+                self.activateFlashlight(mode: self.flashlightMode)
+            }
         }
     }
 
@@ -115,18 +125,11 @@ class SoundDetector: ObservableObject {
         let rms = sqrt(channelDataValue.map { $0 * $0 }.reduce(0, +) / Float(buffer.frameLength))
         let avgPower = 20 * log10(rms)
 
-        print("Sound average power: \(avgPower) dB")
+//        print("Sound average power: \(avgPower) dB")
         if avgPower > -15 { // threshold
             self.stopListening()
-            DispatchQueue.main.async {
-                switch self.mode {
-                case .alarm:
-                    self.playAlarm()
-                    self.flicker()
-                case .flashlight:
-                    self.activateFlashlight(mode: self.flashlightMode)
-                }
-            }
+            self.playAlarm(for: 30)
+            self.flicker()
         }
     }
     
@@ -228,21 +231,44 @@ class SoundDetector: ObservableObject {
 
     
     
-    private func playAlarm() {
+//    private func playAlarm() {
+//        guard let url = Bundle.main.url(forResource: "findphonesound", withExtension: "mp3") else {
+//            print("Alarm sound file not found")
+//            return
+//        }
+//        do {
+//            player = try AVAudioPlayer(contentsOf: url)
+//            player?.play() //Alarm Playing
+//        } catch {
+//            print("❌ Could not play alarm: \(error.localizedDescription)")
+//        }
+//    }
+    
+    
+    
+    
+    private func playAlarm(for duration: TimeInterval) {
         guard let url = Bundle.main.url(forResource: "findphonesound", withExtension: "mp3") else {
             print("Alarm sound file not found")
             return
         }
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            player?.play() //Alarm Playing
+            player?.play()
+            
+            // Stop after `duration` seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+                self?.player?.stop()
+                self?.stopTorchEffect()
+                self?.player = nil
+            }
         } catch {
             print("❌ Could not play alarm: \(error.localizedDescription)")
         }
     }
 }
 
-
+//MARK: Extension for flash light effect
 extension SoundDetector {
     
     // 🌊 Lighthouse: Long sweep-like blink (on 2s, off 2s)
