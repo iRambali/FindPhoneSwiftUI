@@ -7,18 +7,34 @@
 */
 
 //MARK: tab icon titles
-coughing = "खाँसी";
+
+phone_call = "फ़ोन कॉल";
+ambulance = "एम्बुलेंस";
+air_horn = "एयर हॉर्न";
+service_bell = "सर्विस बेल";
+cat = "बिल्ली";
 snapping = "चुटकी";
-sneezing = "छींकना";
 train = "ट्रेन";
 hello = "नमस्ते";
-air_horn = "एयर हॉर्न";
-shouting = "चिल्लाना";
-singing = "गाना";
-say_name = "नाम बोलें";
-clap = "ताली";
 whistle = "सीटी";
-laughing = "हँसना";
+clap = "ताली";
+hen = "मुर्गी";
+guitar = "गिटार";
+
+
+
+//coughing = "खाँसी";
+//snapping = "चुटकी";
+//sneezing = "छींकना";
+//train = "ट्रेन";
+//hello = "नमस्ते";
+//air_horn = "एयर हॉर्न";
+//shouting = "चिल्लाना";
+//singing = "गाना";
+//say_name = "नाम बोलें";
+//clap = "ताली";
+//whistle = "सीटी";
+//laughing = "हँसना";
 
 home_tab = "होम";
 settings_tab = "सेटिंग्स";

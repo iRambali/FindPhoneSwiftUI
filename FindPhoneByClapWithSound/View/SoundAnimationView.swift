@@ -16,7 +16,7 @@ struct SoundAnimationView: View {
         ZStack{
             Image(iconImage)
                 .resizable()
-                .frame(width: 62, height: 62)
+                .frame(width: 92, height: 92)
             
                 Circle()
                 .stroke(Color.colorFirstCircle, lineWidth: 10)

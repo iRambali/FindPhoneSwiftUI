@@ -6,18 +6,33 @@
   
 */
 //MARK: tab icon titles
-"coughing" = "ખાંસી";
+
+"phone_call" = "ફોન કોલ";
+"ambulance" = "એમ્બ્યુલન્સ";
+"air_horn" = "એર હોર્ન";
+"service_bell" = "સર્વિસ બેલ";
+"cat" = "બિલાડી";
 "snapping" = "આંગળીઓ ચટકાવવી";
-"sneezing" = "છાંકડો";
 "train" = "ટ્રેન";
 "hello" = "હેલો";
-"air_horn" = "એર હોર્ન";
-"shouting" = "બુમ";
-"singing" = "ગાયન";
-"say_name" = "નામ બોલવું";
-"clap" = "તાળી";
 "whistle" = "સિટી";
-"laughing" = "હસવું";
+"clap" = "તાળી";
+"hen" = "કૂકડી";
+"guitar" = "ગિટાર";
+
+
+//"coughing" = "ખાંસી";
+//"snapping" = "આંગળીઓ ચટકાવવી";
+//"sneezing" = "છાંકડો";
+//"train" = "ટ્રેન";
+//"hello" = "હેલો";
+//"air_horn" = "એર હોર્ન";
+//"shouting" = "બુમ";
+//"singing" = "ગાયન";
+//"say_name" = "નામ બોલવું";
+//"clap" = "તાળી";
+//"whistle" = "સિટી";
+//"laughing" = "હસવું";
 
 //Controller View Name
 "home_tab" = "હોમ";

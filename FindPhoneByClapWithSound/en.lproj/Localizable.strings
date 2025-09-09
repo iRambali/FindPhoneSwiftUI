@@ -6,18 +6,32 @@
   
 */
 //MARK: tab icon titles
-coughing = "Coughing";
+phone_call = "Phone Call";
+ambulance = "Ambulance";
+air_horn = "Air Horn";
+service_bell = "Service Bell";
+cat = "Cat";
 snapping = "Snapping";
-sneezing = "Sneezing";
 train = "Train";
 hello = "Hello";
-air_horn = "Air Horn";
-shouting = "Shouting";
-singing = "Singing";
-say_name = "Say Name";
-clap = "Clap";
 whistle = "Whistle";
-laughing = "Laughing";
+clap = "Clap";
+hen = "Hen";
+guitar = "Guitar";
+
+
+//coughing = "Coughing";
+//snapping = "Snapping";
+//sneezing = "Sneezing";
+//train = "Train";
+//hello = "Hello";
+//air_horn = "Air Horn";
+//shouting = "Shouting";
+//singing = "Singing";
+//say_name = "Say Name";
+//clap = "Clap";
+//whistle = "Whistle";
+//laughing = "Laughing";
 
 //Controller View Name
 home_tab = "Home";

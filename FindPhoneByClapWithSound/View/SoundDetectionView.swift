@@ -14,8 +14,8 @@ struct SoundDetectionView: View {
     @ObservedObject private var detector = SoundDetector.shared
     
     
-    var tabIcons:[(String, String)]
-    @State var selectedIcon: (String, String)
+    var tabIcons:[(String, String, String)]
+    @State var selectedIcon: (String, String, String)
     
     var body: some View {
         
@@ -69,7 +69,8 @@ struct SoundDetectionView: View {
                     isTapped.toggle()
                     
                     if isTapped {
-                        detector.startListening()
+                        detector.startListening(soundName: selectedIcon.2)
+                        print("Sound name : \(selectedIcon.2)")
                     }else {
                         detector.stopListening()
                         detector.stopAlarm()
@@ -136,5 +137,5 @@ struct SoundDetectionView: View {
 }
 
 #Preview {
-    SoundDetectionView(tabIcons: icons, selectedIcon: ("snapping","Snapping"))
+    SoundDetectionView(tabIcons: icons, selectedIcon: ("snapping","Snapping","ambulance"))
 }

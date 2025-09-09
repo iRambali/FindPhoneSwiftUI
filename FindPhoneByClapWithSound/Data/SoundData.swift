@@ -24,31 +24,32 @@ let soundData : [SoundMode] = [
 
 let icons = [
     //ImageName - Title
-    ("coughing", "coughing"),
-    ("snapping", "snapping"),
-    ("sneezing", "sneezing"),
-    ("train", "train"),
-    ("hello", "hello"),
-    ("air-horn", "air_horn"),
-    ("shouting", "shouting"),
-    ("singing", "singing"),
-    ("say-name", "say_name"),
-    ("clap", "clap"),
-    ("whistle", "whistle"),
-    ("laughing", "laughing")
+    ("phone-call", "phone_call","telephone"),
+    ("ambulance", "ambulance","ambulance"),
+    ("air-horn", "air_horn","air-horn"),
+    ("office-bell", "service_bell","office-bell"),
+    ("cat", "cat","cat"),
+    ("snapping", "snapping","snap"),
+    ("train", "train","train-horn"),
+    ("hello", "hello","hello"),
+    ("whistle", "whistle","whistle"),
+    ("clap", "clap","claping"),
+    ("hen", "hen","hen"),
+    ("guitar", "guitar","guitar")
+    
 ]
 
 
 let lightIcons = [
     // ImageName - title
-    ("light_house", "light_house_title"),
-    ("fire_light", "fire_light_title"),
-    ("flicker", "flicker_title"),
-    ("standard", "standard_title"),
-    ("green_light", "green_light_title"),
-    ("strobe", "strobe_title"),
-    ("sos", "sos_title"),
-    ("party", "party_title"),
-    ("dim", "dim_title")
+    ("light_house", "light_house_title","ambulance"),
+    ("fire_light", "fire_light_title","ambulance"),
+    ("flicker", "flicker_title","ambulance"),
+    ("standard", "standard_title","ambulance"),
+    ("green_light", "green_light_title","ambulance"),
+    ("strobe", "strobe_title","ambulance"),
+    ("sos", "sos_title","ambulance"),
+    ("party", "party_title","ambulance"),
+    ("dim", "dim_title","ambulance")
     
 ]

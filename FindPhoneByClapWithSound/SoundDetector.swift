@@ -82,7 +82,7 @@ class SoundDetector: ObservableObject {
     }
 
 
-    func startListening() {
+    func startListening(soundName: String) {
         
         DispatchQueue.main.async { [self] in
             switch self.mode {
@@ -100,7 +100,7 @@ class SoundDetector: ObservableObject {
                 print("🎛️ Audio detection is not supported in Simulator.")
 #else
                 inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
-                    self.analyzeBuffer(buffer: buffer)
+                    self.analyzeBuffer(buffer: buffer, soundName: soundName)
                 }
 #endif
                 
@@ -128,7 +128,7 @@ class SoundDetector: ObservableObject {
         print("🛑 Listening stopped")
     }
 
-    private func analyzeBuffer(buffer: AVAudioPCMBuffer) {
+    private func analyzeBuffer(buffer: AVAudioPCMBuffer, soundName: String) {
         // Get average power level
         guard let channelData = buffer.floatChannelData?[0] else { return }
         let channelDataValue = stride(from: 0,
@@ -141,7 +141,7 @@ class SoundDetector: ObservableObject {
         print("Sound average power: \(avgPower) dB")
         if avgPower > Float(selectedLevel.value) { // threshold
             self.stopListening()
-            self.playAlarm(for: selectedTimeInterval.value)
+            self.playAlarm(for: selectedTimeInterval.value, soundName: soundName)
             self.flicker()
         }
     }
@@ -242,26 +242,8 @@ class SoundDetector: ObservableObject {
         isTorchActive = false
     }
 
-    
-    
-//    private func playAlarm() {
-//        guard let url = Bundle.main.url(forResource: "findphonesound", withExtension: "mp3") else {
-//            print("Alarm sound file not found")
-//            return
-//        }
-//        do {
-//            player = try AVAudioPlayer(contentsOf: url)
-//            player?.play() //Alarm Playing
-//        } catch {
-//            print("❌ Could not play alarm: \(error.localizedDescription)")
-//        }
-//    }
-    
-    
-    
-    
-    private func playAlarm(for duration: TimeInterval) {
-        guard let url = Bundle.main.url(forResource: "findphonesound", withExtension: "mp3") else {
+    private func playAlarm(for duration: TimeInterval, soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
             print("Alarm sound file not found")
             return
         }
