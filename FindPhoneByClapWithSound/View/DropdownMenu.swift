@@ -17,9 +17,9 @@ enum SoundSensitivity: String, CaseIterable, Identifiable {
     
     var value: Double {
         switch self {
-        case .low: return -20.0   // example volume multiplier
-        case .medium: return -5.0
-        case .high: return 10.0
+        case .low: return -25.0   // example volume multiplier
+        case .medium: return -15.0
+        case .high: return -5.0
         }
     }
 }
@@ -31,6 +31,14 @@ enum TimeIntervalOption: String, CaseIterable, Identifiable {
     case thirtySec = "30 Seconds"
 
     var id: String { self.rawValue }
+    var value: Double {
+        switch self {
+        case .tenSec: return 10.0
+        case .fifteenSec: return 15.0
+        case .twentySec: return 20.0
+        case .thirtySec: return 30.0
+        }
+    }
 }
 
 struct DropdownMenu<T: CaseIterable & Identifiable & RawRepresentable>: View where T.RawValue == String {

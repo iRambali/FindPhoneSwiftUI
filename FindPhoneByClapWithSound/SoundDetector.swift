@@ -69,6 +69,18 @@ class SoundDetector: ObservableObject {
         private var currentTorchWorkItem: DispatchWorkItem?
         var isTorchActive = false
         var shouldStopTorch = false
+    
+    
+    @AppStorage("selectedLevel") private var selectedLevelRaw: String = SoundSensitivity.low.rawValue
+    var selectedLevel: SoundSensitivity {
+        SoundSensitivity(rawValue: selectedLevelRaw) ?? .low
+    }
+    
+    @AppStorage("selectedInterval") private var selectedTimeIntervalRaw: String = TimeIntervalOption.tenSec.rawValue
+    var selectedTimeInterval: TimeIntervalOption {
+        TimeIntervalOption(rawValue: selectedTimeIntervalRaw) ?? .tenSec
+    }
+
 
     func startListening() {
         
@@ -76,7 +88,8 @@ class SoundDetector: ObservableObject {
             switch self.mode {
             case .alarm:
                 
-                
+                print("Selected level is: \(selectedLevel) and Value is: \(selectedLevel.value)")
+                print("Selected time interval is: \(selectedTimeInterval) and Value is: \(selectedTimeInterval.value)")
                 if isListening { return }
                 DispatchQueue.main.async {
                     self.isListening = true
@@ -125,10 +138,10 @@ class SoundDetector: ObservableObject {
         let rms = sqrt(channelDataValue.map { $0 * $0 }.reduce(0, +) / Float(buffer.frameLength))
         let avgPower = 20 * log10(rms)
 
-//        print("Sound average power: \(avgPower) dB")
-        if avgPower > -15 { // threshold
+        print("Sound average power: \(avgPower) dB")
+        if avgPower > Float(selectedLevel.value) { // threshold
             self.stopListening()
-            self.playAlarm(for: 30)
+            self.playAlarm(for: selectedTimeInterval.value)
             self.flicker()
         }
     }
@@ -254,13 +267,13 @@ class SoundDetector: ObservableObject {
         }
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.numberOfLoops = -1 // infinite loop
             player?.play()
-            
+
             // Stop after `duration` seconds
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
-                self?.player?.stop()
+                self?.stopAlarm()
                 self?.stopTorchEffect()
-                self?.player = nil
             }
         } catch {
             print("❌ Could not play alarm: \(error.localizedDescription)")

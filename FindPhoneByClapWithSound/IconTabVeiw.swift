@@ -21,8 +21,9 @@ struct IconTabVeiw: View {
             Image(imageName)
                 .resizable()
                 .frame(width: 62, height: 62)
-                .scaleEffect(animate ? 1.3 : 1.0)
+                .scaleEffect(animate ? 1.2 : 1.0)
                 .opacity(animate ? 1.2 : 1.0)
+                .padding(.bottom, -8)
                 
             Text(title)
                 .font(.system(.subheadline, design: .rounded))
@@ -35,11 +36,13 @@ struct IconTabVeiw: View {
                 runCycle()
             }
         }
-        .frame(width: 80, height: 120, alignment: .center)
-        .padding()
+        .frame(width: 110, height: 110) // make it square
         .background(Color.white)
-        .shadow(radius: 8)
-        .cornerRadius(30)
+        .cornerRadius(12)
+        
+//        .clipShape(Circle())            // force circle
+//        .shadow(radius: 8)
+
     }
     
     private func runCycle() {
@@ -65,7 +68,7 @@ struct IconTabVeiw: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         IconTabVeiw(imageName: "snapping", title: "Snapping", index: 0, activeIndex: 0)
-            .previewLayout(.fixed(width: 200, height: 200))
+//            .previewLayout(.fixed(width: 200, height: 200))
     }
 }
 
