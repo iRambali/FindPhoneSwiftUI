@@ -17,46 +17,33 @@ struct SoundAnimationView: View {
             Image(iconImage)
                 .resizable()
                 .frame(width: 92, height: 92)
-            
-                Circle()
-                .stroke(Color.colorFirstCircle, lineWidth: 10)
-                .frame(width: 150)
-            
-            Circle()
-            .stroke(Color.colorSecondCircle, lineWidth: 10)
-            .frame(width: 160)
-            
-            Circle()
-            .stroke(Color.colorThirdCircle, lineWidth: 10)
-            .frame(width: 170)
-            
-            Circle()
-            .stroke(Color.colorForthCircle, lineWidth: 10)
-            .frame(width: 180)
-            
-            Circle()
-            .stroke(Color.colorFifthCircle, lineWidth: 10)
-            .frame(width: 190)
-            
-            Circle()
-                .stroke(Color.colorSeventhCircle, lineWidth: 10)
-            .frame(width: 200)
-            
-            Circle()
-            .stroke(Color.colorEightCircle, lineWidth: 10)
-            .frame(width: 210)
-            
-            Circle()
-            .stroke(Color.colorNinethCircle, lineWidth: 10)
-            .frame(width: 220)
-    
-            
+            StrokedCircle(color: .colorFirstCircle, diameter: 150)
+            StrokedCircle(color: .colorSecondCircle, diameter: 160)
+            StrokedCircle(color: .colorThirdCircle, diameter: 170)
+            StrokedCircle(color: .colorForthCircle, diameter: 180)
+            StrokedCircle(color: .colorFifthCircle, diameter: 190)
+            StrokedCircle(color: .colorSeventhCircle, diameter: 200)
+            StrokedCircle(color: .colorEightCircle, diameter: 210)
+            StrokedCircle(color: .colorNinethCircle, diameter: 220)
         }
+        .padding()
         .onAppear {
             animate = true
         }
 //        .background(Color.colorBackground)
         
+    }
+}
+
+struct StrokedCircle: View {
+    var color: Color
+    var diameter: CGFloat
+    var lineWidth: CGFloat = 10
+    
+    var body: some View {
+        Circle()
+            .stroke(color, lineWidth: lineWidth)
+            .frame(width: diameter, height: diameter)
     }
 }
 
@@ -67,6 +54,6 @@ struct SoundAnimationView: View {
 struct SoundAnimationView_Previews: PreviewProvider {
     static var previews: some View {
         SoundAnimationView(iconImage: "clap")
-            .previewLayout(.fixed(width: 320, height: 320))
+            .previewLayout(.fixed(width: 350, height: 350))
     }
 }

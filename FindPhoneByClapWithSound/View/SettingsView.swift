@@ -34,26 +34,12 @@ struct SettingsView: View {
         
         NavigationStack {
             VStack{
-                HStack {
-                    Button(action: {
-                        print("back button tapped.")
-                        dismiss()
-                    }) {
-                        Image(systemName: "arrow.left")
-                            .font(.App.buttonTitle)
-                            .foregroundColor(Color.colorText)
-                    }
-                    
-                    Spacer()
-                    Text(LanguageManager.shared.localizedString(for: "settings"))
-                        .font(.App.navigationTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.colorText)
-                    Spacer()
+                //MARK: Navigation Header
+                NavigationHeader(title: LanguageManager.shared.localizedString(for: "settings")) {
+                    dismiss()
                 }
-                .padding()
-                .padding(.leading)
                 
+                //MARK: body
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
                         

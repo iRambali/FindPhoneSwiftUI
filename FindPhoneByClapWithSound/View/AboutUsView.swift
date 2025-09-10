@@ -11,26 +11,13 @@ struct AboutUsView: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                
-                Button(action: {
-                    print("back button tapped.")
-                    dismiss()
-                }) {
-                    Image(systemName: "arrow.left")
-                        .font(.App.buttonTitle)
-                        .foregroundColor(.colorText)
-                }
-                
-                Spacer()
-                Text("About Us")
-                    .font(.App.navigationTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.colorText)
-                Spacer()
+            
+            //MARK: Navigation header
+            NavigationHeader(
+                title: "About Us"
+            ) {
+                dismiss()
             }
-            .padding()
-            .padding(.leading)
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center){

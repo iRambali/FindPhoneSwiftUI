@@ -21,25 +21,13 @@ struct FlashModeView: View {
         NavigationStack{
             VStack(spacing: 0){
                 //MARK:  Navigation Header
-                HStack {
-                    Button(action: {
-                        print("back button tapped.")
-                        dismiss()
-                    }) {
-                        Image(systemName: "arrow.left")
-                            .font(.App.buttonTitle)
-                            .foregroundColor(Color.colorText)
-                    }
-                    
-                    Spacer()
-                    Text(LanguageManager.shared.localizedString(for: "flash_mode"))
-                        .font(.App.navigationTitle)
-                        .foregroundColor(Color.colorText)
-                    Spacer()
+                NavigationHeader(
+                    title: LanguageManager.shared.localizedString(for: "flash_mode")
+                ) {
+                    dismiss()
                 }
-                .padding()
-                .padding(.leading)
                 
+                //MARK: body
                 ScrollView{
                     VStack(alignment: .center, spacing: 0){
                         Text(LanguageManager.shared.localizedString(for: "multiple_lights"))
