@@ -27,15 +27,14 @@ struct FlashModeView: View {
                         dismiss()
                     }) {
                         Image(systemName: "arrow.left")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
+                            .font(.App.buttonTitle)
+                            .foregroundColor(Color.colorText)
                     }
                     
                     Spacer()
                     Text(LanguageManager.shared.localizedString(for: "flash_mode"))
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
+                        .font(.App.navigationTitle)
+                        .foregroundColor(Color.colorText)
                     Spacer()
                 }
                 .padding()
@@ -44,9 +43,9 @@ struct FlashModeView: View {
                 ScrollView{
                     VStack(alignment: .center, spacing: 0){
                         Text(LanguageManager.shared.localizedString(for: "multiple_lights"))
-                            .font(.system(size: 18, design: .serif))
+                            .font(.App.heading)
                             .fontWeight(.medium)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(.colorText)
                             .padding(.top, 30)
                     }
                     

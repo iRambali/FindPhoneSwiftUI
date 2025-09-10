@@ -74,16 +74,16 @@ struct DropdownMenu<T: CaseIterable & Identifiable & RawRepresentable>: View whe
             }) {
                 HStack {
                     Text(selectedItem.rawValue)
-                        .foregroundColor(.black)
-                        .font(.system(size: 16, weight: .regular))
+                        .foregroundColor(.colorText)
+                        .font(.App.buttonTitle)
                     Spacer()
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .font(.system(size: 20, weight: .medium))
-                        .foregroundColor(.black)
+                        .font(.App.buttonTitle)
+                        .foregroundColor(.colorText)
                         .frame(width: 30, height: 30)
                 }
                 .padding()
-                .background(Color.white)
+                .background(Color.blue.opacity(0.3))
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
             
@@ -98,9 +98,10 @@ struct DropdownMenu<T: CaseIterable & Identifiable & RawRepresentable>: View whe
                             }
                         }) {
                             Text(item.rawValue)
+                                .font(.App.body)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()
-                                .foregroundColor(.black)
+                                .foregroundColor(.colorText)
                                 .background(selectedItem == item ? Color.green.opacity(0.3) : Color.clear)
                         }
                         Divider()

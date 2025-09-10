@@ -20,15 +20,15 @@ struct IconTabVeiw: View {
         VStack(alignment: .center, spacing: 12) {
             Image(imageName)
                 .resizable()
-                .frame(width: 62, height: 62)
+                .scaledToFit()
+                .frame(width: 52, height: 52)
                 .scaleEffect(animate ? 1.2 : 1.0)
                 .opacity(animate ? 1.2 : 1.0)
-                .padding(.bottom, -8)
+                .padding(.bottom, -12)
                 
             Text(title)
-                .font(.system(.subheadline, design: .rounded))
-                .fontWeight(.regular)
-                .foregroundColor(Color.black)
+                .font(.App.title)
+                .foregroundColor(Color.colorText)
                 .padding(.top, 8)
         }
         .onChange(of: activeIndex) { newValue in
@@ -37,12 +37,12 @@ struct IconTabVeiw: View {
             }
         }
         .frame(width: 110, height: 110) // make it square
-        .background(Color.white)
-        .cornerRadius(12)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(radius: 4)
+        )
         
-//        .clipShape(Circle())            // force circle
-//        .shadow(radius: 8)
-
     }
     
     private func runCycle() {
@@ -60,15 +60,11 @@ struct IconTabVeiw: View {
     }
 }
 
-//#Preview {
-//    IconTabVeiw()
-//        .previewLayout(.fixed(width: 340, height: 340))
-//}
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         IconTabVeiw(imageName: "snapping", title: "Snapping", index: 0, activeIndex: 0)
-//            .previewLayout(.fixed(width: 200, height: 200))
+            .previewLayout(.fixed(width: 200, height: 200))
     }
 }
 

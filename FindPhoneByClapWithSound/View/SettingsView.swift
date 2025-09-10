@@ -40,15 +40,15 @@ struct SettingsView: View {
                         dismiss()
                     }) {
                         Image(systemName: "arrow.left")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
+                            .font(.App.buttonTitle)
+                            .foregroundColor(Color.colorText)
                     }
                     
                     Spacer()
                     Text(LanguageManager.shared.localizedString(for: "settings"))
-                        .font(.title)
+                        .font(.App.navigationTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.colorText)
                     Spacer()
                 }
                 .padding()
@@ -62,7 +62,7 @@ struct SettingsView: View {
                         NavigationLink(destination: FlashModeView()) {
                             SettingRow(icon: "lightbulb.max.fill",
                                        title: LanguageManager.shared.localizedString(for: "more_flash_mode"),
-                                       background: Color.white)
+                                       background: Color.blue.opacity(0.3))
                         }
                         
                         // MARK: - Language Section
@@ -71,7 +71,7 @@ struct SettingsView: View {
                         NavigationLink(destination: SetLanguageView()) {
                             SettingRow(icon: "globe",
                                        title: LanguageManager.shared.localizedString(for: "change_language"),
-                                       background: Color.white)
+                                       background: Color.blue.opacity(0.3))
                         }
                         
                         //MARK: - Level
@@ -151,9 +151,9 @@ struct SectionHeader: View {
     
     var body: some View {
         Text(title)
-            .font(.title)
+            .font(.App.heading)
             .fontWeight(.semibold)
-            .foregroundColor(.white)
+            .foregroundColor(.colorText)
     }
 }
 
@@ -166,12 +166,12 @@ struct SettingRow: View {
     var body: some View {
         HStack {
             Image(systemName: icon)
-                .font(Font.system(size: 24, weight: .medium))
+                .font(.App.heading)
                 .foregroundColor(.black)
                 .frame(width: 30, height: 30)
             
             Text(title)
-                .font(.system(size: 16, weight: .regular))
+                .font(.App.buttonTitle)
                 .foregroundColor(.black)
             
             Spacer()
@@ -192,17 +192,18 @@ struct ConnectRow: View {
     var body: some View {
         HStack {
             Image(systemName: icon)
-                .font(Font.system(size: 24, weight: .medium))
+                .font(.App.heading)
                 .foregroundColor(iconColor)
                 .frame(width: 30, height: 30)
             
             Text(title)
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(.blue)
+                .font(.App.buttonTitle)
+                .foregroundColor(.colorText)
             
             Spacer()
         }
         .padding()
+        .background(Color.gray.opacity(0.2))
     }
 }
 

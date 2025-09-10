@@ -18,15 +18,15 @@ struct AboutUsView: View {
                     dismiss()
                 }) {
                     Image(systemName: "arrow.left")
-                        .font(.title3)
-                        .foregroundColor(Color.white)
+                        .font(.App.buttonTitle)
+                        .foregroundColor(.colorText)
                 }
                 
                 Spacer()
                 Text("About Us")
-                    .font(.title)
+                    .font(.App.navigationTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(.colorText)
                 Spacer()
             }
             .padding()
@@ -38,18 +38,21 @@ struct AboutUsView: View {
                         .resizable()
                         .frame(width: 100, height: 100)
                         .padding()
-                        .background(Color.white)
+                        .background(Color.gray.opacity(0.3))
                 }
+                .cornerRadius(20)
                 .padding(.top, 20)
                 
                 VStack(alignment: .leading, spacing: 12) {
                     // Centered header section
                     VStack(spacing: 4) {
                         Text("FindPhoneByClapWithSounds")
-                            .font(.system(size: 18, weight: .semibold, design: .serif))
+                            .font(.App.title)
+                            .foregroundColor(.colorText)
 
                         Text("Version: 1.0.0")
-                            .font(.system(size: 12, weight: .regular, design: .serif))
+                            .font(.App.footer)
+                            .foregroundColor(.colorText)
                     }
                     .frame(maxWidth: .infinity, alignment: .center) // center these two lines
 
@@ -57,7 +60,9 @@ struct AboutUsView: View {
                     Text("Find Phone by Clap With Sounds is a smart and fun utility app that helps you find your phone by clapping, whistling, or other custom sounds. Perfect for moments when your device is lost in silence!")
                         .multilineTextAlignment(.leading)
                         .padding(.top, 8)
-                        .padding(.bottom, 50)
+                        .padding(.bottom, 35)
+                        .font(.App.body)
+                        .foregroundColor(.colorText)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
@@ -72,34 +77,50 @@ struct AboutUsView: View {
                     HStack {
                         Spacer()
                         Text("Key Features")
-                            .font(Font.system(size: 18, weight: .semibold, design: .serif))
+                            .font(.App.title)
+                            .foregroundColor(.colorText)
                             .padding(.bottom, 4)
                         Spacer()
                     }
 
                     HStack {
                         Image(systemName: "star.fill")
+                            .font(.App.buttonTitle)
                         Text("Clap detection to find your phone")
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
 
                     HStack {
                         Image(systemName: "star.fill")
+                            .font(.App.buttonTitle)
                         Text("Whistle and shout support")
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
 
                     HStack {
                         Image(systemName: "star.fill")
+                            .font(.App.buttonTitle)
                         Text("Works even in silent mode")
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
 
                     HStack {
                         Image(systemName: "star.fill")
+                            .font(.App.buttonTitle)
                         Text("Custom ringtone and themes")
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
 
                     HStack {
                         Image(systemName: "star.fill")
+                            .font(.App.buttonTitle)
                         Text("Lightweight and battery-efficient")
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading) // keep VStack full width + align left
@@ -112,11 +133,11 @@ struct AboutUsView: View {
                 
                 VStack(alignment: .center, spacing: 8){
                     Text("Developed with ❤️ by Datability Team")
-                        .font(.system(size: 14, weight: .none, design: .serif))
+                        .font(.App.footer)
                         .foregroundStyle(Color.gray)
                     
                     Text("support@datability.com")
-                        .font(.system(size: 12, weight: .none, design: .serif))
+                        .font(.App.footer)
                         .foregroundStyle(Color.green .opacity(0.3))
                 }
                 .frame(maxWidth: .infinity, alignment: .center)

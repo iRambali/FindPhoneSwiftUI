@@ -31,9 +31,9 @@ struct ContentView: View {
                 
                 HStack {
                     Text(LanguageManager.shared.localizedString(for: "home_tab"))
-                        .font(.title)
+                        .font(.App.navigationTitle)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.colorText)
                     
                     Spacer()
                     Button(action: {
@@ -41,8 +41,8 @@ struct ContentView: View {
                     }) {
                         NavigationLink(destination: SettingsView()) {
                             Image(systemName: "gearshape.fill")
-                                .font(.title)
-                                .foregroundColor(Color.white)
+                                .font(.App.navigationTitle)
+                                .foregroundColor(Color.colorText)
                         }
                     }
                 }
@@ -53,9 +53,8 @@ struct ContentView: View {
                 ScrollView {
                     
                     Text(LanguageManager.shared.localizedString(for: "tagline_text"))
-                        .font(.system(size: 18, design: .serif))
-                        .fontWeight(.medium)
-                        .foregroundColor(Color.white)
+                        .font(.App.heading)
+                        .foregroundColor(Color.colorText)
                         .padding(.top, 30)
                     
                     LazyVGrid(columns: columns, spacing: 20) {
@@ -86,24 +85,24 @@ struct ContentView: View {
                     
                     VStack {
                         Text(LanguageManager.shared.localizedString(for: "rule_text"))
-                        .font(.system(.body, design: .serif))
-                        .foregroundColor(Color.white)
-                        .fontWeight(.light)
+                        
+                            .foregroundColor(Color.colorText)
+                        .font(.App.body)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
                         .lineSpacing(8)
                         .padding(12)
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.white ,lineWidth: 2)
+                                .stroke(Color.gray ,lineWidth: 2)
                         )
                     }
                     .padding()
                     
                     VStack(alignment: .leading) {
                         Text(makeAttributedText())
-                            .font(.system(.body, design: .serif))
-                            .foregroundColor(.white)
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
                     .padding(.leading, 10)
                     .padding(.trailing)
@@ -111,8 +110,8 @@ struct ContentView: View {
                     Spacer()
                     VStack(alignment: .center, spacing: 0) {
                         Text(LanguageManager.shared.localizedString(for: "version_text")+" \(appVersion)")
-                            .font(.system(.body, design: .serif))
-                            .foregroundColor(.white)
+                            .font(.App.body)
+                            .foregroundColor(.colorText)
                     }
                     .padding(.top, 18)
                 }

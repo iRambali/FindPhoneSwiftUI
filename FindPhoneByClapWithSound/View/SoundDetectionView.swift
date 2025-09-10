@@ -29,16 +29,16 @@ struct SoundDetectionView: View {
                     detector.stopTorchEffect()
                 }) {
                     Image(systemName: "arrow.left")
-                        .font(.title3)
-                        .foregroundColor(Color.white)
+                        .font(.App.buttonTitle)
+                        .foregroundColor(Color.colorText)
                 }
                 
                 Spacer()
                 
                 Text(LanguageManager.shared.localizedString(for: detector.mode == .alarm ? "sound_detection" : "selected_flash_light"))
-                    .font(.title)
+                    .font(.App.navigationTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.colorText)
                 Spacer()
             }
             .padding()
@@ -48,13 +48,13 @@ struct SoundDetectionView: View {
             VStack {
                 SoundAnimationView(iconImage: selectedIcon.0)
             }
-            .padding(.top, 50)
+            .padding(.top, 40)
             
             
             VStack {
                 Text(LanguageManager.shared.localizedString(for: selectedIcon.1))
-                    .font(Font.system(size: 24, weight: .bold))
-                    .foregroundColor(Color.white)
+                    .font(.App.heading)
+                    .foregroundColor(Color.colorText)
                
             }
             .onAppear {
@@ -97,7 +97,7 @@ struct SoundDetectionView: View {
                             ? (isTapped ? "deactivate_flashlight" : "activate_flashlight")
                             : (isTapped ? "stop_clap_detection" : "activate_clap_detection")
                         Text(LanguageManager.shared.localizedString(for: btnLabel))
-                            .font(.system(size: 18, weight: .bold))
+                            .font(.App.buttonTitle)
                             .foregroundColor(.white)
                     }
                 }

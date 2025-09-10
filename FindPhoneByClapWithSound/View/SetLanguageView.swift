@@ -17,8 +17,8 @@ struct SetLanguageView: View {
             //MARK: Header Navigation view
             HStack {
                 Text("Set Language")
-                    .font(.system(size: 24, weight: .bold, design: .default))
-                    .foregroundStyle(Color.white)
+                    .font(.App.navigationTitle)
+                    .foregroundStyle(.colorText)
                 Spacer()
                 
                 Button (action: {
@@ -34,8 +34,8 @@ struct SetLanguageView: View {
                     dismiss()
                 }) {
                     Image(systemName: "checkmark")
-                        .font(Font.system(size: 24, weight: .medium, design: .default))
-                        .foregroundStyle(Color.white)
+                        .font(.App.buttonTitle)
+                        .foregroundStyle(Color.colorText)
                 }
             }
             .background(Color.colorBackground)
@@ -76,9 +76,9 @@ struct LanguageRow: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(language.name)
-                    .font(.title2)
+                    .font(.App.title)
                 Text(language.subtitle)
-                    .font(.subheadline)
+                    .font(.App.body)
                     .foregroundColor(.gray)
             }
             
