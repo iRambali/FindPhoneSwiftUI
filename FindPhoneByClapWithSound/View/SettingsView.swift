@@ -61,10 +61,10 @@ struct SettingsView: View {
                         }
                         
                         //MARK: - Level
-                        SectionHeader(title: "Sound sensitivity")
+                        SectionHeader(title: LanguageManager.shared.localizedString(for: "sound_sensitivity"))
                         DropdownMenu(selectedItem: selectedLevel)
                         
-                        SectionHeader(title: "Auto sound off")
+                        SectionHeader(title: LanguageManager.shared.localizedString(for: "auto_sound_off"))
                         DropdownMenu(selectedItem: selectedInterval)
                                                 
                         // MARK: - Connect with Us Section
@@ -96,7 +96,7 @@ struct SettingsView: View {
                             Button {
                                 openURL("https://apps.apple.com/app/id739535953") // Replace with real URL
                             } label: {
-                                ConnectRow(icon: "square.and.arrow.up", title: LanguageManager.shared.localizedString(for: "Share App"), iconColor: Color.primary)
+                                ConnectRow(icon: "square.and.arrow.up", title: LanguageManager.shared.localizedString(for: LanguageManager.shared.localizedString(for: "share_app")), iconColor: Color.primary)
                             }
                             
                             Divider()

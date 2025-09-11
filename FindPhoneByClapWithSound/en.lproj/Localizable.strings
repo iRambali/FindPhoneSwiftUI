@@ -20,19 +20,6 @@ hen = "Hen";
 guitar = "Guitar";
 
 
-//coughing = "Coughing";
-//snapping = "Snapping";
-//sneezing = "Sneezing";
-//train = "Train";
-//hello = "Hello";
-//air_horn = "Air Horn";
-//shouting = "Shouting";
-//singing = "Singing";
-//say_name = "Say Name";
-//clap = "Clap";
-//whistle = "Whistle";
-//laughing = "Laughing";
-
 //Controller View Name
 home_tab = "Home";
 settings_tab = "Settings";
@@ -65,6 +52,19 @@ version_text = "Version";
 "rate_us" = "Rate Us";
 "feedback" = "Feedback";
 "privacy_policy" = "Privacy Policy";
+"share_app" = "Share App";
+
+//Droup down list item
+"sound_sensitivity" = "Sound Sensitivity";
+"auto_sound_off" = "Auto Sound Off";
+"low" = "Low";
+"medium" = "Medium";
+"high" = "High";
+"ten_seconds" = "10 Seconds";
+"fifteen_seconds" = "15 Seconds";
+"twenty_seconds" = "20 Seconds";
+"thirty_seconds" = "30 Seconds";
+
 
 //MARK: FlashMode view
 "flash_mode" = "Flash Mode";

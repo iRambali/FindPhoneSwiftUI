@@ -21,18 +21,6 @@
 "guitar" = "ગિટાર";
 
 
-//"coughing" = "ખાંસી";
-//"snapping" = "આંગળીઓ ચટકાવવી";
-//"sneezing" = "છાંકડો";
-//"train" = "ટ્રેન";
-//"hello" = "હેલો";
-//"air_horn" = "એર હોર્ન";
-//"shouting" = "બુમ";
-//"singing" = "ગાયન";
-//"say_name" = "નામ બોલવું";
-//"clap" = "તાળી";
-//"whistle" = "સિટી";
-//"laughing" = "હસવું";
 
 //Controller View Name
 "home_tab" = "હોમ";
@@ -64,6 +52,19 @@
 "rate_us" = "અમને રેટ કરો";
 "feedback" = "પ્રતિસાદ";
 "privacy_policy" = "ગોપનીયતા નીતિ";
+"share_app" = "એપ શેર કરો";
+
+//Droup down list item
+"sound_sensitivity" = "ધ્વનિ સંવેદનશીલતા";
+"auto_sound_off" = "આપોઆપ ધ્વનિ બંધ";
+"low" = "નીચું";
+"medium" = "મધ્યમ";
+"high" = "ઉચ્ચ";
+"ten_seconds" = "10 સેકન્ડ";
+"fifteen_seconds" = "15 સેકન્ડ";
+"twenty_seconds" = "20 સેકન્ડ";
+"thirty_seconds" = "30 સેકન્ડ";
+
 
 //MARK: FlashMode view
 "flash_mode" = "ફ્લેશ મોડ";

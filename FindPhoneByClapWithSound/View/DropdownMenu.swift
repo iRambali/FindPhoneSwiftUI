@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum SoundSensitivity: String, CaseIterable, Identifiable {
-    case low = "Low"
-    case medium = "Medium"
-    case high = "High"
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
 
     var id: String { self.rawValue } // required for ForEach
     
@@ -25,10 +25,10 @@ enum SoundSensitivity: String, CaseIterable, Identifiable {
 }
 
 enum TimeIntervalOption: String, CaseIterable, Identifiable {
-    case tenSec = "10 Seconds"
-    case fifteenSec = "15 Seconds"
-    case twentySec = "20 Seconds"
-    case thirtySec = "30 Seconds"
+    case tenSec = "ten_seconds"
+    case fifteenSec = "fifteen_seconds"
+    case twentySec = "twenty_seconds"
+    case thirtySec = "thirty_seconds"
 
     var id: String { self.rawValue }
     var value: Double {
@@ -73,7 +73,7 @@ struct DropdownMenu<T: CaseIterable & Identifiable & RawRepresentable>: View whe
                 }
             }) {
                 HStack {
-                    Text(selectedItem.rawValue)
+                    Text(LanguageManager.shared.localizedString(for: selectedItem.rawValue))
                         .foregroundColor(.colorText)
                         .font(.App.buttonTitle)
                     Spacer()
@@ -97,7 +97,7 @@ struct DropdownMenu<T: CaseIterable & Identifiable & RawRepresentable>: View whe
                                 isExpanded = false
                             }
                         }) {
-                            Text(item.rawValue)
+                            Text(LanguageManager.shared.localizedString(for: item.rawValue))
                                 .font(.App.body)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()

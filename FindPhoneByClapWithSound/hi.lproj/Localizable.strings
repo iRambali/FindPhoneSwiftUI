@@ -23,19 +23,6 @@ guitar = "गिटार";
 
 
 
-//coughing = "खाँसी";
-//snapping = "चुटकी";
-//sneezing = "छींकना";
-//train = "ट्रेन";
-//hello = "नमस्ते";
-//air_horn = "एयर हॉर्न";
-//shouting = "चिल्लाना";
-//singing = "गाना";
-//say_name = "नाम बोलें";
-//clap = "ताली";
-//whistle = "सीटी";
-//laughing = "हँसना";
-
 home_tab = "होम";
 settings_tab = "सेटिंग्स";
 
@@ -66,6 +53,19 @@ version_text = "संस्करण";
 "rate_us" = "हमें रेट करें";
 "feedback" = "प्रतिक्रिया";
 "privacy_policy" = "गोपनीयता नीति";
+"share_app" = "ऐप साझा करें";
+
+
+//Droup down list item
+"sound_sensitivity" = "ध्वनि संवेदनशीलता";
+"auto_sound_off" = "स्वचालित ध्वनि बंद";
+"low" = "कम";
+"medium" = "मध्यम";
+"high" = "उच्च";
+"ten_seconds" = "10 सेकंड";
+"fifteen_seconds" = "15 सेकंड";
+"twenty_seconds" = "20 सेकंड";
+"thirty_seconds" = "30 सेकंड";
 
 
 //MARK: FlashMode view
