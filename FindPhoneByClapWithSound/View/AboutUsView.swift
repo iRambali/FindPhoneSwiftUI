@@ -21,10 +21,10 @@ struct AboutUsView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center){
-                    Image("snapping")
+                    Image("imageAppicon")
                         .resizable()
-                        .frame(width: 100, height: 100)
-                        .padding()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150)
                         .background(Color.gray.opacity(0.3))
                 }
                 .cornerRadius(20)

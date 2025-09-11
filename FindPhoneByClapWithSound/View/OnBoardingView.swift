@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-/*
-struct OnboardingView: View {
+
+struct OnBoardingView: View {
     @State private var currentPage = 0
     let totalPages = 4
     var onFinish: () -> Void
@@ -49,7 +49,7 @@ struct OnboardingView: View {
                 
                 if currentPage < totalPages - 1 {
                     Button("Skip") {
-                        onFinish()
+                        currentPage = totalPages - 1
                     }
                     .font(.App.buttonTitle)
                     .foregroundColor(.accentColor)
@@ -124,15 +124,16 @@ struct OnboardingPage: View {
 }
 
 
-struct OnboardingView_Previews: PreviewProvider {
+struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(onFinish: {
+        OnBoardingView(onFinish: {
             print("on boarded")
         })
     }
 }
-*/
 
+
+/*
 struct OnBoardingView : View {
     @State var currentIntex: Int = 0
     let total = 4
@@ -160,8 +161,17 @@ struct OnBoardingView : View {
             HStack(spacing: 12){
                 if currentIntex < total - 1 {
                     Button("Skip"){
-                        onFinish()
+                        currentIntex = 3
                     }
+                }else{
+                    Button(action: {
+                        print("button hidden")
+                    }){
+                        Text("Skip")
+                            .disabled(true)
+                    }
+                    
+//                    .isHidden(true)
                 }
                 Spacer()
                 
@@ -200,3 +210,4 @@ struct OnboardingView_Previews: PreviewProvider {
         })
     }
 }
+*/

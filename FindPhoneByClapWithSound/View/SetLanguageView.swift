@@ -22,16 +22,39 @@ struct SetLanguageView: View {
                 Spacer()
                 
                 Button (action: {
-                    hasLaunchedBefore = true
-                    print("Language selected successfully!")
-                    if let lang = LanguageManager.AppLanguage(rawValue: selectedLanguage) {
-                        LanguageManager.shared.currentLanguage = lang
-                        print("Current Language : \(LanguageManager.shared.currentLanguage)")
-                        // Restart UI so translations apply
+//                    hasLaunchedBefore = true
+                    // Save selected language
+                        if let lang = LanguageManager.AppLanguage(rawValue: selectedLanguage) {
+                            LanguageManager.shared.currentLanguage = lang
+                            print("Current Language : \(LanguageManager.shared.currentLanguage)")
+                        }
+
+                    if !hasLaunchedBefore {
+                        // Show OnboardingView first
+                        hasLaunchedBefore = true
+                        let onboardingView = OnBoardingView(onFinish: {
+                            // After onboarding → switch to ContentView
+                            UIApplication.shared.windows.first?.rootViewController =
+                                UIHostingController(rootView: ContentView())
+                        })
+                        
                         UIApplication.shared.windows.first?.rootViewController =
-                        UIHostingController(rootView: ContentView())
+                            UIHostingController(rootView: onboardingView)
+                    }else {
+                        UIApplication.shared.windows.first?.rootViewController =
+                            UIHostingController(rootView: ContentView())
                     }
-                    dismiss()
+//                        // Show OnboardingView first
+//                        let onboardingView = OnBoardingView(onFinish: {
+//                            // After onboarding → switch to ContentView
+//                            UIApplication.shared.windows.first?.rootViewController =
+//                                UIHostingController(rootView: ContentView())
+//                        })
+
+//                        UIApplication.shared.windows.first?.rootViewController =
+//                            UIHostingController(rootView: onboardingView)
+
+                        dismiss()
                 }) {
                     Image(systemName: "checkmark")
                         .font(.App.buttonTitle)
