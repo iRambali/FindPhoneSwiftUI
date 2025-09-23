@@ -92,9 +92,9 @@ struct SettingsView: View {
                             Divider()
                                 .frame(height: 1)              // thickness
                                 .background(Color.gray.opacity(0.8))  // dark color
-                            
+                            //https://apps.apple.com/app/id6752693037
                             Button {
-                                let url = URL(string: "https://apps.apple.com/app/id739535953")!
+                                let url = URL(string: "https://apps.apple.com/app/id6752897407")!
                                     let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
 
                                 DispatchQueue.main.async {
