@@ -30,8 +30,8 @@
             filePath = "FindPhoneByClapWithSound/SoundDetector.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "activateFlashlight(mode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "FindPhoneByClapWithSound/SoundDetector.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
             landmarkName = "standard()"
             landmarkType = "7">
          </BreakpointContent>

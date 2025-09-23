@@ -1,10 +1,10 @@
-////
-////  SettingsView.swift
-////  FindPhoneByClapWithSound
-////
-////  Created by Rambali Kumar on 20/08/25.
-////
 //
+//  SettingsView.swift
+//  FindPhoneByClapWithSound
+//
+//  Created by Rambali Kumar on 20/08/25.
+//
+
 
 
 import SwiftUI
@@ -94,7 +94,15 @@ struct SettingsView: View {
                                 .background(Color.gray.opacity(0.8))  // dark color
                             
                             Button {
-                                openURL("https://apps.apple.com/app/id739535953") // Replace with real URL
+                                let url = URL(string: "https://apps.apple.com/app/id739535953")!
+                                    let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+
+                                DispatchQueue.main.async {
+                                    if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                       let rootVC = scene.windows.first?.rootViewController {
+                                        rootVC.present(activityVC, animated: true)
+                                    }
+                                }
                             } label: {
                                 ConnectRow(icon: "square.and.arrow.up", title: LanguageManager.shared.localizedString(for: LanguageManager.shared.localizedString(for: "share_app")), iconColor: Color.primary)
                             }

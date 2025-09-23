@@ -82,68 +82,65 @@ class SoundDetector: ObservableObject {
     }
 
     
-//    func showPermissionAlert() {
-//        let alert = UIAlertController(
-//            title: "Microphone Permission Required",
-//            message: "This app needs access to your microphone to detect claps and play flashlight effects. Please enable it in Settings.",
-//            preferredStyle: .alert
-//        )
-//        
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-//        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
-//            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-//                UIApplication.shared.open(settingsURL)
-//            }
-//        })
-//        
-//        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
-//    }
-//    
-//    func requestMicrophonePermission(completion: @escaping (Bool) -> Void) {
-//        AVAudioSession.sharedInstance().requestRecordPermission { granted in
-//            DispatchQueue.main.async {
-//                completion(granted)
-//            }
-//        }
-//    }
+    func showPermissionAlert() {
+        let alert = UIAlertController(
+            title: "Microphone Permission Required",
+            message: "This app needs access to your microphone to detect claps and play sound with flashlight effects. Please enable it in Settings.",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL)
+            }
+        })
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+    }
+    
+    func checkMicrophonePermission() {
+        let session = AVAudioSession.sharedInstance()
+        
+        switch session.recordPermission {
+        case .granted:
+            print("Grant permission")
+            // self.clapDetector.start() // Uncomment if needed
+            
+        case .denied:
+            // ❌ Permission denied → show alert guiding user
+            showPermissionAlert()
+            
+        case .undetermined:
+            requestMicrophonePermission { granted in
+                if granted {
+                    // self.clapDetector.start()
+                    print("Grant permission")
+                } else {
+                    self.showPermissionAlert()
+                }
+            }
+            
+        @unknown default:
+            break
+        }
+    }
+    
+    func requestMicrophonePermission(completion: @escaping (Bool) -> Void) {
+        AVAudioSession.sharedInstance().requestRecordPermission { granted in
+            DispatchQueue.main.async {
+                completion(granted)
+            }
+        }
+    }
 
     func startListening(soundName: String) {
         
         DispatchQueue.main.async { [self] in
             switch self.mode {
             case .alarm:
-                
-                
-                
-                
-//                let session = AVAudioSession.sharedInstance()
-//                switch session.recordPermission {
-//                    case .granted:
-//                        // ✅ Already granted → start detection
-////                        clapDetector.start()
-//                    print("Grant permission")
-//                        
-//                    case .denied:
-//                        // ❌ Permission denied → show alert guiding user
-//                        showPermissionAlert()
-//                        
-//                    case .undetermined:
-//                        // 🤔 Ask for permission
-//                        requestMicrophonePermission { granted in
-//                            if granted {
-////                                self.clapDetector.start()
-//                                print("Grant permission")
-//                            } else {
-//                                self.showPermissionAlert()
-//                            }
-//                        }
-//                        
-//                    @unknown default:
-//                        break
-//                    }
-                
-                print("Selected level is: \(selectedLevel) and Value is: \(selectedLevel.value)")
-                print("Selected time interval is: \(selectedTimeInterval) and Value is: \(selectedTimeInterval.value)")
+
+                checkMicrophonePermission()
                 if isListening { return }
                 DispatchQueue.main.async {
                     self.isListening = true

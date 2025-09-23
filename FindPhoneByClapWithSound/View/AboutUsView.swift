@@ -21,7 +21,7 @@ struct AboutUsView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center){
-                    Image("imageAppicon")
+                    Image("appLogo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 150, height: 150)
