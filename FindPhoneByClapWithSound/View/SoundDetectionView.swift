@@ -62,6 +62,7 @@ struct SoundDetectionView: View {
                             detector.stopListening()
                             detector.stopAlarm()
                             detector.stopTorchEffect()
+                            detector.delegate?.didFinishAlarm()
                         }
                     }) {
                         ZStack {
@@ -86,6 +87,9 @@ struct SoundDetectionView: View {
                                 .font(.App.buttonTitle)
                                 .foregroundColor(.white)
                         }
+                    }
+                    .onAppear {
+                        detector.delegate = DetectorCoordinator(isTapped: $isTapped)
                     }
                 }
                 
@@ -121,6 +125,33 @@ struct SoundDetectionView: View {
         
     }
         
+}
+
+protocol SoundDetectorDelegate: AnyObject {
+    func didDetectClap()
+    func didFinishAlarm()
+}
+
+
+class DetectorCoordinator: SoundDetectorDelegate {
+    @Binding var isTapped: Bool
+    
+    init(isTapped: Binding<Bool>) {
+        self._isTapped = isTapped
+    }
+    
+    func didDetectClap() {
+        print("👏 Clap detected → starting alarm")
+        // Start alarm with configured duration
+    }
+    
+    func didFinishAlarm() {
+        DispatchQueue.main.async {
+            print("✅ Alarm finished → resetting button")
+            self.isTapped = false
+            
+        }
+    }
 }
 
 #Preview {

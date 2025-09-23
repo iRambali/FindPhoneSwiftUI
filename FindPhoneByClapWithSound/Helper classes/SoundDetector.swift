@@ -51,7 +51,7 @@ class SoundDetector: ObservableObject {
             case "dim_title":
                 self.flashlightMode = .dim
             default:
-                print("⚠️ Unknown flashlight mode: \(title)")
+                print("Unknown flashlight mode: \(title)")
             }
         }
     }
@@ -64,11 +64,14 @@ class SoundDetector: ObservableObject {
     @Published var isListening = false
     @Published var flashlightMode: FlashlightMode = .standard
     
+    var delegate: SoundDetectorDelegate?
+    
     
     private var torchQueue = DispatchQueue(label: "torchQueue", qos: .userInitiated)
         private var currentTorchWorkItem: DispatchWorkItem?
         var isTorchActive = false
         var shouldStopTorch = false
+    var stopTimer: Timer?
     
     
     @AppStorage("selectedLevel") private var selectedLevelRaw: String = SoundSensitivity.low.rawValue
@@ -144,6 +147,7 @@ class SoundDetector: ObservableObject {
                 if isListening { return }
                 DispatchQueue.main.async {
                     self.isListening = true
+                    self.delegate?.didDetectClap()
                 }
                 let inputNode = audioEngine.inputNode
                 let format = inputNode.inputFormat(forBus: 0)
@@ -271,6 +275,9 @@ class SoundDetector: ObservableObject {
     func stopAlarm() {
         player?.stop()
         player = nil
+        
+        stopTimer?.invalidate()
+        stopTimer = nil
         print("🔇 Alarm stopped")
     }
     
@@ -302,14 +309,21 @@ class SoundDetector: ObservableObject {
             player = try AVAudioPlayer(contentsOf: url)
             player?.numberOfLoops = -1 // infinite loop
             player?.play()
+            
+            stopTimer?.invalidate()
 
             // Stop after `duration` seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
-                self?.stopAlarm()
-                self?.stopTorchEffect()
+            DispatchQueue.main.async {
+                self.stopTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
+                    self?.stopAlarm()
+                    self?.stopTorchEffect()
+                    self?.delegate?.didFinishAlarm()
+                }
+                RunLoop.main.add(self.stopTimer!, forMode: .common)
             }
+
         } catch {
-            print("❌ Could not play alarm: \(error.localizedDescription)")
+            print("Could not play alarm: \(error.localizedDescription)")
         }
     }
 }
@@ -317,7 +331,7 @@ class SoundDetector: ObservableObject {
 //MARK: Extension for flash light effect
 extension SoundDetector {
     
-    // 🌊 Lighthouse: Long sweep-like blink (on 2s, off 2s)
+    // Lighthouse: Long sweep-like blink (on 2s, off 2s)
     func lighthouse() {
         stopTorchEffect()
         shouldStopTorch = false
@@ -345,7 +359,7 @@ extension SoundDetector {
                 try device.lockForConfiguration()
                 device.torchMode = .off
                 device.unlockForConfiguration()
-                print("🔦 Lighthouse OFF")
+                print("Lighthouse OFF")
             } catch {}
         }
 
@@ -353,7 +367,7 @@ extension SoundDetector {
         torchQueue.async(execute: workItem)
     }
 
-    // 🔥 Firelight: Random flickering (simulate fire)
+    // Firelight: Random flickering (simulate fire)
     func firelight() {
         stopTorchEffect()
         shouldStopTorch = false
@@ -364,20 +378,20 @@ extension SoundDetector {
 
             while !self.shouldStopTorch {
                 do {
-                    // ✅ ON phase
+                    // ON phase
                     try device.lockForConfiguration()
                     try device.setTorchModeOn(level: 0.8) // Full brightness
                     device.unlockForConfiguration()
                     Thread.sleep(forTimeInterval: 0.2) // ON duration
 
-                    // ✅ OFF phase
+                    //OFF phase
                     try device.lockForConfiguration()
                     device.torchMode = .off
                     device.unlockForConfiguration()
                     Thread.sleep(forTimeInterval: 0.1) // OFF duration
 
                 } catch {
-                    print("❌ Torch error: \(error.localizedDescription)")
+                    print("Torch error: \(error.localizedDescription)")
                 }
             }
 
@@ -387,7 +401,7 @@ extension SoundDetector {
                     try device.lockForConfiguration()
                     device.torchMode = .off
                     device.unlockForConfiguration()
-                    print("🟢 Green light stopped, torch OFF")
+                    print("Green light stopped, torch OFF")
                 } catch {}
             }
         }
